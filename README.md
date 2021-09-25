@@ -13,7 +13,7 @@ $ npm install dsbmobile
 ```js
 import { Dsbmobile } from "dsbmobile";
 
-let dm = new dsbmobile(name, password);
+let dm = new Dsbmobile(name, password);
 
 await dm.fetchToken();
 
