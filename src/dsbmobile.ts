@@ -49,7 +49,6 @@ export class Dsbmobile {
 				`/dsbtimetables?authid=${this.token}`
 			);
 		} catch (e) {
-			console.log(e);
 			throw new WrongCredentials();
 		}
 
@@ -73,7 +72,6 @@ export class Dsbmobile {
 					`&user=${this.id}&password=${this.password}`
 			);
 		} catch (e) {
-			console.log(e);
 			throw new WrongCredentials();
 		}
 
