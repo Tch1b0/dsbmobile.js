@@ -1,23 +1,20 @@
 import { Entry } from "./entry";
-import { DOMParser } from "xmldom";
+import cheerio from "cheerio";
 
 export class TimeTable {
 	constructor(public readonly entries: Array<Entry>) {}
 
 	static fromHtml(html: string) {
-		var doc = new DOMParser().parseFromString(html, "text/html");
+		const $ = cheerio.load(html);
 
 		var entries: Array<Entry> = [];
 
-		for (var i = 0; i < doc.getElementsByTagName("center").length; i++) {
-			let centerTag = doc.getElementsByTagName("center")[i];
+		for (var i = 0; i < $("center").length; i++) {
+			let centerTag = $("center").l[i];
 
 			console.log("CHECKPOINT 1 - " + centerTag.firstChild);
 
-			if (
-				!centerTag.firstChild ||
-				centerTag.firstChild.nodeName !== "div"
-			) {
+			if (!centerTag.firstChild || centerTag.children[0] !== "div") {
 				continue;
 			}
 
