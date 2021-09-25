@@ -4,7 +4,7 @@ const { Entry } = require("../dist/entry");
 const nock = require("nock");
 const fs = require("fs");
 
-const sampleHtml = fs.readFileSync("test/sample.html", { encoding: "utf-8" });
+const sampleHtml = fs.readFileSync("test/sample", { encoding: "utf-8" });
 
 describe("Test DSBmobile Wrapper", () => {
 	before(() => {
