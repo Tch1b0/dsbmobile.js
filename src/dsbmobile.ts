@@ -21,16 +21,14 @@ export class Dsbmobile {
 			)
 			.then((res) => {
 				this.token = res.data;
-				console.log(res);
-				console.log("\n\n\n-----------\n\n\n");
 			})
 			.catch((_err) => {
 				throw WrongCredentials;
 			});
 	}
 
-	async fetch(): Promise<TimeTable> {
-		if (this.token.length == 0) {
+	async fetch() {
+		if (this.token.length === undefined) {
 			throw new WrongCredentials();
 		}
 
@@ -44,6 +42,10 @@ export class Dsbmobile {
 			throw new WrongCredentials();
 		}
 
-		return resp.data;
+		let ttURL = resp.data[0]["Childs"][0]["Detail"];
+
+		resp = await this.requester.get(ttURL);
+
+		return TimeTable.fromHtml(resp.data);
 	}
 }

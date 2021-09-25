@@ -22,10 +22,12 @@
 	},
 	"homepage": "https://github.com/Tch1b0/dsbmobile.js#readme",
 	"dependencies": {
+		"@types/xmldom": "^0.1.31",
 		"axios": "^0.21.4",
 		"htmlparser": "^1.7.7",
 		"nock": "^13.1.3",
-		"typescript": "^4.4.3"
+		"typescript": "^4.4.3",
+		"xmldom": "^0.6.0"
 	},
 	"devDependencies": {
 		"chai": "^4.3.4",
