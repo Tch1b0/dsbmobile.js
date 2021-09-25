@@ -1,16 +1,35 @@
 import { Entry } from "./entry";
-import cheerio, { Cheerio } from "cheerio";
+import cheerio from "cheerio";
 
+/**
+ * The time table ressource
+ */
 export class TimeTable {
 	constructor(public readonly entries: Array<Entry>) {}
 
-	static fromHtml(raw_html: string) {
-		const $ = cheerio.load(raw_html);
+	/**
+	 * Find a certain time table entry by the class
+	 * @param className The class name you want to search for
+	 * @returns Either one Entry, multiple Entries or undefined
+	 */
+	findByClassName(className: string): Entry | Entry[] | undefined {
+		return this.entries.find((entry) =>
+			entry.className.includes(className)
+		);
+	}
 
-		let centers = $("center");
+	/**
+	 * Create a new `TimeTable` from HTML
+	 * @param rawHtml The raw html string
+	 * @returns A new `TimeTable` ressource
+	 */
+	static fromHtml(rawHtml: string) {
+		const $ = cheerio.load(rawHtml);
+
+		var centers = $("center");
 		var entries: Array<Entry> = [];
 
-		for (let center of centers) {
+		for (var center of centers) {
 			if (center.children.length <= 1) {
 				continue;
 			}
@@ -20,10 +39,10 @@ export class TimeTable {
 				.replace(",", "")
 				.split(" ")[1];
 
-			for (let row of $(center).find("tr")) {
+			for (var row of $(center).find("tr")) {
 				if ($(row).find("th").length !== 0) continue;
 
-				let columns = $(row).find("td");
+				var columns = $(row).find("td");
 
 				entries.push(
 					new Entry(
