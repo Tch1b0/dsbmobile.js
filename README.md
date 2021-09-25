@@ -15,9 +15,9 @@ import dsbmobile from "dsbmobile";
 
 let dm = new dsbmobile(name, password);
 
-let timeTable = await dm.fetch();
+let t = await dm.getTimetable();
 
-console.log(timeTable[0].subject);
+console.log(t.entries[0].newSubject);
 ```
 
 ```
