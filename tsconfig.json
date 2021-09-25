@@ -1,14 +1,15 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": false,
-        "declaration": true,
-        "outDir": "dist",
-        "rootDir": "src",
-        "esModuleInterop": true,
-        "strict": true
-    },
-    "include": ["src/**/*"]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"noImplicitAny": false,
+		"sourceMap": false,
+		"declaration": true,
+		"outDir": "dist",
+		"rootDir": "src",
+		"esModuleInterop": true,
+		"strict": true,
+		"downlevelIteration": true
+	},
+	"include": ["src/**/*"]
 }
