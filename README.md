@@ -15,6 +15,8 @@ import dsbmobile from "dsbmobile";
 
 let dm = new dsbmobile(name, password);
 
+await dm.fetchToken();
+
 let t = await dm.getTimetable();
 
 console.log(t.entries[0].newSubject);
