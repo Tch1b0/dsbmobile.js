@@ -1,0 +1,34 @@
+{
+	"name": "dsbmobile",
+	"version": "1.0.0",
+	"description": "A Javascript wrapper for the dsbmobile api",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"test": "npm run build && mocha"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Tch1b0/dsbmobile.js.git"
+	},
+	"keywords": [
+		"wrapper",
+		"typescript"
+	],
+	"author": "tch1b0 <jpour3006@gmail.com> (https://johannespour.de/)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Tch1b0/dsbmobile.js/issues"
+	},
+	"homepage": "https://github.com/Tch1b0/dsbmobile.js#readme",
+	"dependencies": {
+		"axios": "^0.21.4",
+		"htmlparser": "^1.7.7",
+		"nock": "^13.1.3",
+		"typescript": "^4.4.3"
+	},
+	"devDependencies": {
+		"chai": "^4.3.4",
+		"mocha": "^9.1.1"
+	}
+}
