@@ -39,6 +39,23 @@ export class TimeTable {
 				.replace(",", "")
 				.split(" ")[1];
 
+			let rawDate = $(center)
+				.find(".mon_title")
+				.text()
+				.split(" ")[0]
+				.split(".");
+
+			// Create new date from text
+			var date = new Date(
+				Number(rawDate[2]),
+				Number(rawDate[1]) - 1, // Those are some small adjustments
+				Number(rawDate[0]) + 1, //
+				0,
+				0,
+				0,
+				0
+			);
+
 			for (var row of $(center).find("tr")) {
 				if ($(row).find("th").length !== 0) continue;
 
@@ -46,9 +63,10 @@ export class TimeTable {
 
 				entries.push(
 					new Entry(
+						date,
 						day,
 						$(columns[0]).text().split(" "),
-						$(columns[1]).text(),
+						Number($(columns[1]).text()),
 						$(columns[2]).text(),
 						$(columns[3]).text(),
 						$(columns[4]).text(),

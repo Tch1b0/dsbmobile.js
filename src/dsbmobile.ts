@@ -49,6 +49,7 @@ export class Dsbmobile {
 				`/dsbtimetables?authid=${this.token}`
 			);
 		} catch (e) {
+			console.log(e);
 			throw new WrongCredentials();
 		}
 
@@ -71,7 +72,8 @@ export class Dsbmobile {
 				"/authid?bundleid=de.heinekingmedia.dsbmobile&appversion=35&osversion=22&pushid" +
 					`&user=${this.id}&password=${this.password}`
 			);
-		} catch {
+		} catch (e) {
+			console.log(e);
 			throw new WrongCredentials();
 		}
 

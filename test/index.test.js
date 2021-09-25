@@ -1,14 +1,34 @@
 const should = require("chai").should();
+const Dsbmobile = require("../dist/index").Dsbmobile;
+const { Entry } = require("../dist/entry");
 const nock = require("nock");
+const fs = require("fs");
 
-const dsbmobile = require("../dist/index");
-
-const baseURL = "dsbmobile.";
+const sampleHtml = fs.readFileSync("test/sample.html", { encoding: "utf-8" });
 
 describe("Test DSBmobile Wrapper", () => {
-	it("Get default timetable", (done) => {
-		nock("https://app.dsbcontrol.de")
-			.post("/JsonHandler.ashx/GetData")
-			.reply(200, {});
+	before(() => {
+		nock("https://mobileapi.dsbcontrol.de")
+			.get("/authid")
+			.query(true)
+			.reply(200, "1234")
+			.get("/dsbtimetables")
+			.query(true)
+			.reply(200, [{ Childs: [{ Detail: "https://test.com/" }] }]);
+		nock("https://test.com").get("/").reply(200, sampleHtml);
+	});
+	it("Get default timetable", async () => {
+		const ds = new Dsbmobile(
+			"testUser",
+			"testPassword",
+			"https://mobileapi.dsbcontrol.de",
+			"1234"
+		);
+		const t = await ds.getTimetable();
+		const entry = t.entries[0];
+		entry.should.be.instanceOf(Entry);
+		entry.getTime().should.be.instanceOf(Date);
+		entry.period.should.not.be.instanceOf(String);
+		return;
 	});
 });

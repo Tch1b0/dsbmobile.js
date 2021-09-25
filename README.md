@@ -1,5 +1,8 @@
 # dsbmobile.js
 
+![badge](https://img.shields.io/github/license/Tch1b0/dsbmobile.js)
+![badge](https://img.shields.io/github/issues/Tch1b0/dsbmobile.js)
+
 A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) api
 
 ## Installation
