@@ -1,3 +1,5 @@
+import { parseDate } from "../utility";
+
 export class NewsPost {
 	constructor(
 		public readonly title: string,
@@ -11,8 +13,7 @@ export class NewsPost {
 	 * @returns A new `NewsPost`
 	 */
 	public static fromJSON(json: object): NewsPost {
-		let raw_date = Date.parse(json["date"]);
-		let date = new Date(raw_date);
+		let date = parseDate(json["Date"]);
 
 		return new NewsPost(json["title"], date, json["detail"]);
 	}
