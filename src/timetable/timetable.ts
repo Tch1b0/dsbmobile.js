@@ -5,7 +5,7 @@ import cheerio from "cheerio";
  * The time table ressource
  */
 export class TimeTable {
-	constructor(public readonly entries: Array<Entry>) {}
+	constructor(public readonly entries: Entry[]) {}
 
 	/**
 	 * Find a certain entry by the class name
@@ -73,7 +73,7 @@ export class TimeTable {
 		const $ = cheerio.load(rawHtml);
 
 		var centers = $("center");
-		var entries: Array<Entry> = [];
+		var entries: Entry[] = [];
 
 		for (var center of centers) {
 			if (center.children.length <= 1) {

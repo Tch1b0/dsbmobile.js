@@ -1,5 +1,11 @@
-import { MissingToken, TimeTable, WrongCredentials } from ".";
+import {
+	MissingToken,
+	NewsPostCollection,
+	TimeTable,
+	WrongCredentials,
+} from ".";
 import axios, { AxiosInstance, AxiosResponse } from "axios";
+import { NewsPost } from "./news/newspost";
 
 export class Dsbmobile {
 	requester: AxiosInstance;
@@ -18,7 +24,7 @@ export class Dsbmobile {
 	constructor(
 		public readonly id: string,
 		public readonly password: string,
-		baseURL: string = "https://mobileapi.dsbcontrol.de",
+		public readonly baseURL: string = "https://mobileapi.dsbcontrol.de",
 		token?: string
 	) {
 		this.requester = axios.create({
@@ -33,11 +39,11 @@ export class Dsbmobile {
 	}
 
 	/**
-	 * Get your current `TimeTable`
+	 * Get your current **Timetable**
 	 * @returns A new `TimeTable` ressource
 	 * @throws
 	 */
-	async getTimetable(): Promise<TimeTable> {
+	public async getTimetable(): Promise<TimeTable> {
 		if (this.token.length === undefined) {
 			throw new MissingToken();
 		}
@@ -48,7 +54,7 @@ export class Dsbmobile {
 			resp = await this.requester.get(
 				`/dsbtimetables?authid=${this.token}`
 			);
-		} catch (e) {
+		} catch {
 			throw new WrongCredentials();
 		}
 
@@ -60,10 +66,32 @@ export class Dsbmobile {
 	}
 
 	/**
+	 * Get your current **NewsTab**
+	 * @returns A new `NewsPostCollection`
+	 */
+	public async getNewsPosts(): Promise<NewsPostCollection> {
+		let resp: AxiosResponse;
+
+		try {
+			resp = await this.requester.get(`/newstab?authid=${this.token}`);
+		} catch {
+			throw WrongCredentials;
+		}
+
+		let news: NewsPost[] = [];
+
+		for (let raw_news of resp.data) {
+			news.push(NewsPost.fromJSON(raw_news));
+		}
+
+		return new NewsPostCollection(news);
+	}
+
+	/**
 	 * Fetch your token.
 	 * The token is stored in this object
 	 */
-	async fetchToken() {
+	public async fetchToken() {
 		let res: AxiosResponse;
 
 		try {
