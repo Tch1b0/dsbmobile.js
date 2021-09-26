@@ -1,14 +1,17 @@
 import {
+	DocumentPost,
+	DocumentPostCollection,
 	MissingToken,
 	NewsPostCollection,
 	TimeTable,
 	WrongCredentials,
 } from ".";
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { NewsPost } from "./news/newspost";
+import { Requester } from "./requester";
 
 export class Dsbmobile {
-	requester: AxiosInstance;
+	requester: Requester;
 	token!: string;
 
 	/**
@@ -27,9 +30,11 @@ export class Dsbmobile {
 		public readonly baseURL: string = "https://mobileapi.dsbcontrol.de",
 		token?: string
 	) {
-		this.requester = axios.create({
+		let axiosInstance = axios.create({
 			baseURL,
 		});
+
+		this.requester = new Requester(axiosInstance);
 
 		if (token === undefined) {
 			this.fetchToken();
@@ -44,19 +49,9 @@ export class Dsbmobile {
 	 * @throws
 	 */
 	public async getTimetable(): Promise<TimeTable> {
-		if (this.token.length === undefined) {
-			throw new MissingToken();
-		}
-
-		let resp: AxiosResponse;
-
-		try {
-			resp = await this.requester.get(
-				`/dsbtimetables?authid=${this.token}`
-			);
-		} catch {
-			throw new WrongCredentials();
-		}
+		let resp = await this.requester.get(
+			`/dsbtimetables?authid=${this.token}`
+		);
 
 		let ttURL = resp.data[0]["Childs"][0]["Detail"];
 
@@ -70,13 +65,7 @@ export class Dsbmobile {
 	 * @returns A new `NewsPostCollection`
 	 */
 	public async getNewsPosts(): Promise<NewsPostCollection> {
-		let resp: AxiosResponse;
-
-		try {
-			resp = await this.requester.get(`/newstab?authid=${this.token}`);
-		} catch {
-			throw WrongCredentials;
-		}
+		let resp = await this.requester.get(`/newstab?authid=${this.token}`);
 
 		let news: NewsPost[] = [];
 
@@ -85,6 +74,22 @@ export class Dsbmobile {
 		}
 
 		return new NewsPostCollection(news);
+	}
+
+	public async getDocumentPosts(): Promise<DocumentPostCollection> {
+		let resp = await this.requester.get(
+			`/dsbdocuments?authid=${this.token}`
+		);
+
+		let documents: DocumentPost[] = [];
+		console.log(resp.data);
+		for (let i of resp.data) {
+			for (let rawPost of i["Childs"]) {
+				documents.push(DocumentPost.fromJSON(rawPost));
+			}
+		}
+
+		return new DocumentPostCollection(documents);
 	}
 
 	/**

@@ -25,9 +25,9 @@ export class NewsPostCollection {
 	public findByDate(date: Date): NewsPost[] {
 		return this.news.filter(
 			(news) =>
-				news.date.getFullYear === date.getFullYear &&
-				news.date.getMonth === date.getMonth &&
-				news.date.getDay === date.getDay
+				news.date.getFullYear() === date.getFullYear() &&
+				news.date.getMonth() === date.getMonth() &&
+				news.date.getDay() === date.getDay()
 		);
 	}
 
