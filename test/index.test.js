@@ -39,6 +39,9 @@ describe("Test DSBmobile Wrapper", () => {
 		otherEntry.oldSubject.should.eq("CH");
 		otherEntry.longOldSubject.should.eq("Chemie");
 
+		const someCertainEntry = t.findByClassName("TGM11/1");
+		someCertainEntry.should.be.instanceOf(Array);
+
 		return;
 	});
 });

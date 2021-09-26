@@ -8,13 +8,59 @@ export class TimeTable {
 	constructor(public readonly entries: Array<Entry>) {}
 
 	/**
-	 * Find a certain time table entry by the class
+	 * Find a certain entry by the class name
 	 * @param className The class name you want to search for
-	 * @returns Either one Entry, multiple Entries or undefined
-	 */
-	findByClassName(className: string): Entry | Entry[] | undefined {
-		return this.entries.find((entry) =>
+	 * @returns an Array of Entries that match the className
+	 * */
+	public findByClassName(className: string): Entry[] {
+		return this.entries.filter((entry) =>
 			entry.className.includes(className)
+		);
+	}
+
+	/**
+	 * Find a certain entry by a room name
+	 * @param roomName The room you want to search for
+	 * @returns an Array of Entries that match the roomName
+	 * */
+	public findByRoom(roomName: string): Entry[] {
+		return this.entries.filter(
+			(entry) => entry.oldRoom === roomName || entry.newRoom === roomName
+		);
+	}
+
+	/**
+	 * Find a certain subject by its subject short.
+	 * For e.g the short for `Englisch` would be `E`.
+	 *
+	 * If you want to find a subject based on its long name, then please
+	 * use the `TimeTable.findBySubjectLong` function
+	 *
+	 * @param subject The subject short you want to search for
+	 * @returns an Array of Entries that match the subject
+	 * */
+	public findBySubjectShort(subject: string): Entry[] {
+		return this.entries.filter(
+			(entry) =>
+				entry.oldSubject === subject || entry.newSubject === subject
+		);
+	}
+
+	/**
+	 * Find a certain subject by its long subject name.
+	 * For e.g `Englisch` for `E`.
+	 *
+	 * If you want to find a subject based on its subject short, then please
+	 * use the `TimeTable.findBySubjectShort` function
+	 *
+	 * @param subject The full subject name
+	 * @returns an Array of Entries that match the subject
+	 */
+	public findBySubjectLong(subject: string): Entry[] | undefined {
+		return this.entries.filter(
+			(entry) =>
+				entry.longOldSubject === subject ||
+				entry.longNewSubject === subject
 		);
 	}
 
