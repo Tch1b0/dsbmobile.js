@@ -6,6 +6,8 @@ const fs = require("fs");
 
 const sampleHtml = fs.readFileSync("test/sample", { encoding: "utf-8" });
 
+var entries;
+
 describe("Test DSBmobile Wrapper", () => {
 	before(() => {
 		nock("https://mobileapi.dsbcontrol.de")
@@ -17,7 +19,7 @@ describe("Test DSBmobile Wrapper", () => {
 			.reply(200, [{ Childs: [{ Detail: "https://test.com/" }] }]);
 		nock("https://test.com").get("/").reply(200, sampleHtml);
 	});
-	it("Get default timetable", async () => {
+	it("Get default timetable and use entries", async () => {
 		const ds = new Dsbmobile(
 			"testUser",
 			"testPassword",
@@ -25,10 +27,18 @@ describe("Test DSBmobile Wrapper", () => {
 			"1234"
 		);
 		const t = await ds.getTimetable();
+
+		// Test Entries
 		const entry = t.entries[0];
 		entry.should.be.instanceOf(Entry);
-		entry.getTime().should.be.instanceOf(Date);
+		entry.realTime.should.be.instanceOf(Date);
 		entry.period.should.not.be.instanceOf(String);
+		entry.exactDateAndTime.should.be.instanceOf(Date);
+
+		const otherEntry = t.entries[2];
+		otherEntry.oldSubject.should.eq("CH");
+		otherEntry.longOldSubject.should.eq("Chemie");
+
 		return;
 	});
 });
