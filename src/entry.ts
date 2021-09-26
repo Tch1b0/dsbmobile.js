@@ -15,11 +15,11 @@ export class Entry {
 	/**
 	 * The entry only holds a `period` attribute, which does
 	 * not represent actual time.
-	 * This function gives you the real time of the entry
+	 * This function gives you the real time of the lesson
 	 *
-	 * @returns Real time of the entry
+	 * @returns Real time of the lesson
 	 */
-	public getTime(): Date {
+	get realTime(): Date {
 		const periodToTime = {
 			1: new Date(0, 0, 0, 7, 30),
 			2: new Date(0, 0, 0, 8, 15),
@@ -41,5 +41,73 @@ export class Entry {
 		};
 
 		return periodToTime[this.period];
+	}
+
+	/**
+	 * This property returns a Date object, that represents the exact
+	 * Day, month, year, hour and minute of the lesson
+	 */
+	get exactDateAndTime(): Date {
+		let exactDate = this.date;
+		let lessonTime = this.realTime;
+		exactDate.setMinutes(lessonTime.getMinutes());
+		exactDate.setHours(lessonTime.getHours());
+
+		return exactDate;
+	}
+
+	/**
+	 * The `newSubject` property is only the short of the subject.
+	 * Here you get the full name of a subject, e.g:
+	 * ```
+	 *
+	 * // entry.newSubject = "E"
+	 *
+	 * entry.longNewSubject()
+	 * // -> Englisch
+	 * ```
+	 *
+	 */
+	get longNewSubject(): string {
+		return this.longSubjectName(this.newSubject);
+	}
+
+	/**
+	 * The `oldSubject` property is only the short of the subject.
+	 * Here you get the full name of a subject, e.g:
+	 * ```
+	 *
+	 * // entry.oldSubject = "WI"
+	 *
+	 * entry.longOldSubject()
+	 * // -> Wirtschaft
+	 * ```
+	 *
+	 */
+	get longOldSubject(): string {
+		return this.longSubjectName(this.oldSubject);
+	}
+
+	private longSubjectName(subject: string): string {
+		const subjectShorts = {
+			D: "Deutsch",
+			E: "Englisch",
+			WI: "Wirtschaft",
+			GGK: "Geschichte und Gemeinschaftskunde",
+			CH: "Chemie",
+			S1: "Sport",
+			S2: "Sport",
+			S3: "Sport",
+			S4: "Sport",
+			M: "Mathe",
+			BK: "Bildende Kunst",
+			GS: "Global Studies",
+			PH: "Physik",
+			IT: "Informationstechnik",
+			ITÜS: "IT Softwareentwicklung",
+			ITÜH: "IT Hardware",
+		};
+
+		return subjectShorts[subject];
 	}
 }
