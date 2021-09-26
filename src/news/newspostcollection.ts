@@ -39,4 +39,19 @@ export class NewsPostCollection {
 	public findByDetail(detail: string): NewsPost[] {
 		return this.news.filter((news) => news.detail === detail);
 	}
+
+	public toJSON(): object {
+		return {
+			news: this.news,
+		};
+	}
+
+	public static fromJSON(data: object): NewsPostCollection {
+		let newsArr: NewsPost[] = [];
+		for (let news of data["news"]) {
+			newsArr.push(NewsPost.fromJSON(news));
+		}
+
+		return new NewsPostCollection(newsArr);
+	}
 }

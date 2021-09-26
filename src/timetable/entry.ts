@@ -134,4 +134,34 @@ export class Entry {
 
 		return subjectLong;
 	}
+
+	public toJSON(): object {
+		return {
+			date: this.date,
+			day: this.day,
+			"class-name": this.className,
+			period: this.period,
+			type: this.type,
+			"old-subject": this.oldSubject,
+			"new-subject": this.newSubject,
+			"old-room": this.oldRoom,
+			"new-room": this.newRoom,
+			description: this.description,
+		};
+	}
+
+	public static fromJSON(data: object): Entry {
+		return new Entry(
+			data["date"],
+			data["day"],
+			data["class-name"],
+			data["period"],
+			data["type"],
+			data["old-subject"],
+			data["new-subject"],
+			data["old-room"],
+			data["new-room"],
+			data["description"]
+		);
+	}
 }
