@@ -52,4 +52,17 @@ export class DocumentPostCollection {
 	public findByPreview(previewUrl: string): DocumentPost[] {
 		return this.posts.filter((post) => post.previewUrl === previewUrl);
 	}
+
+	public toJSON(): object {
+		return { posts: this.posts };
+	}
+
+	public static fromJSON(data: object): DocumentPostCollection {
+		let posts: DocumentPost[] = [];
+		for (let post of data["posts"]) {
+			posts.push(DocumentPost.fromJSON(post));
+		}
+
+		return new DocumentPostCollection(posts);
+	}
 }

@@ -126,4 +126,19 @@ export class TimeTable {
 
 		return new TimeTable(entries);
 	}
+
+	public toJSON(): object {
+		return {
+			entries: this.entries,
+		};
+	}
+
+	public static fromJSON(data: object): TimeTable {
+		let entries: Entry[] = [];
+		for (let entry of data["entries"]) {
+			entries.push(Entry.fromJSON(entry));
+		}
+
+		return new TimeTable(entries);
+	}
 }

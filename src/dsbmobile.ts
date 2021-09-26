@@ -70,7 +70,7 @@ export class Dsbmobile {
 		let news: NewsPost[] = [];
 
 		for (let raw_news of resp.data) {
-			news.push(NewsPost.fromJSON(raw_news));
+			news.push(NewsPost.fromApiResponse(raw_news));
 		}
 
 		return new NewsPostCollection(news);
@@ -85,7 +85,7 @@ export class Dsbmobile {
 		console.log(resp.data);
 		for (let i of resp.data) {
 			for (let rawPost of i["Childs"]) {
-				documents.push(DocumentPost.fromJSON(rawPost));
+				documents.push(DocumentPost.fromApiResponse(rawPost));
 			}
 		}
 
@@ -109,5 +109,23 @@ export class Dsbmobile {
 		}
 
 		this.token = res.data;
+	}
+
+	public toJSON(): object {
+		return {
+			id: this.id,
+			password: this.password,
+			"base-url": this.baseURL,
+			token: this.token,
+		};
+	}
+
+	public static fromJSON(data: object): Dsbmobile {
+		return new Dsbmobile(
+			data["id"],
+			data["password"],
+			data["base-url"],
+			data["token"]
+		);
 	}
 }

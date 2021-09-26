@@ -9,16 +9,36 @@ export class DocumentPost {
 		public readonly previewUrl: string
 	) {}
 
-	public static fromJSON(json: object): DocumentPost {
-		let date = parseDate(json["Date"]);
-		let previewUrl = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${json["Preview"]}`;
+	public static fromApiResponse(data: object): DocumentPost {
+		let date = parseDate(data["Date"]);
+		let previewUrl = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${data["Preview"]}`;
 
 		return new DocumentPost(
-			json["Id"],
-			json["Title"],
+			data["Id"],
+			data["Title"],
 			date,
-			json["Detail"],
+			data["Detail"],
 			previewUrl
+		);
+	}
+
+	public toJSON(): object {
+		return {
+			id: this.id,
+			title: this.title,
+			date: this.date,
+			url: this.url,
+			"preview-url": this.previewUrl,
+		};
+	}
+
+	public static fromJSON(data: object): DocumentPost {
+		return new DocumentPost(
+			data["id"],
+			data["title"],
+			data["date"],
+			data["url"],
+			data["preview-url"]
 		);
 	}
 }
