@@ -1,3 +1,5 @@
+import { UnknownSubject } from "..";
+
 export class Entry {
 	constructor(
 		public readonly date: Date,
@@ -88,7 +90,7 @@ export class Entry {
 		return this.longSubjectName(this.oldSubject);
 	}
 
-	private longSubjectName(subject: string): string {
+	private longSubjectName(subjectShort: string): string {
 		const subjectShorts = {
 			D: "Deutsch",
 			E: "Englisch",
@@ -101,13 +103,35 @@ export class Entry {
 			S4: "Sport",
 			M: "Mathe",
 			BK: "Bildende Kunst",
+			BK1: "Bildende Kunst",
+			BK2: "Bildende Kunst",
 			GS: "Global Studies",
+			GS1: "Global Studies",
+			GS2: "Global Studies",
 			PH: "Physik",
-			IT: "Informationstechnik",
+			IT: "Informatik",
+			INF: "Informationstechnik",
 			ITÜS: "IT Softwareentwicklung",
 			ITÜH: "IT Hardware",
+			EVR1: "Religion",
+			EVR2: "Religion",
+			ETH1: "Ethik",
+			ETH2: "Ethik",
+			"SP/B1": "Zweitsprache",
+			"SP/B2": "Zweitsprache",
+			"SP/B3": "Zweitsprache",
+			"SP/B4": "Zweitsprache",
+			IFÖM: "Mathe Förderunterricht",
+			IFÖE: "Englisch Förderunterricht",
+			IFÖD: "Deutsch Förderunterricht",
 		};
 
-		return subjectShorts[subject];
+		let subjectLong = subjectShorts[subjectShort];
+
+		if (subjectLong === undefined) {
+			throw new UnknownSubject();
+		}
+
+		return subjectLong;
 	}
 }
