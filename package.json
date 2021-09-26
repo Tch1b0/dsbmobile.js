@@ -6,7 +6,8 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"test": "npm run build && mocha"
+		"btest": "npm run build && npm test",
+		"test": "mocha"
 	},
 	"repository": {
 		"type": "git",
