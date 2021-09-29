@@ -1,9 +1,15 @@
+/**
+ * Thrown if the token can not be fetched
+ */
 export class WrongCredentials extends Error {
 	constructor() {
 		super("either the username or the password was wrong.");
 	}
 }
 
+/**
+ * Thrown if a request is tried to be made without a token declared
+ */
 export class MissingToken extends Error {
 	constructor() {
 		super(
@@ -12,6 +18,9 @@ export class MissingToken extends Error {
 	}
 }
 
+/**
+ * Thrown if a subject-short is not known
+ */
 export class UnknownSubject extends Error {
 	constructor() {
 		super(

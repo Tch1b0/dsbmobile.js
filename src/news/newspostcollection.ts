@@ -40,12 +40,20 @@ export class NewsPostCollection {
 		return this.news.filter((news) => news.detail === detail);
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return {
 			news: this.news,
 		};
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new `NewsPostCollection`
+	 */
 	public static fromJSON(data: object): NewsPostCollection {
 		let newsArr: NewsPost[] = [];
 		for (let news of data["news"]) {

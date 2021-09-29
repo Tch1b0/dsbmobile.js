@@ -9,6 +9,11 @@ export class DocumentPost {
 		public readonly previewUrl: string
 	) {}
 
+	/**
+	 * Create a new Document post from the json structure of the dsb backend
+	 * @param data The `JSON` data
+	 * @returns A new DocumentPost instance
+	 */
 	public static fromApiResponse(data: object): DocumentPost {
 		let date = parseDate(data["Date"]);
 		let previewUrl = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${data["Preview"]}`;
@@ -22,6 +27,9 @@ export class DocumentPost {
 		);
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return {
 			id: this.id,
@@ -32,6 +40,11 @@ export class DocumentPost {
 		};
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new DocumentPost
+	 */
 	public static fromJSON(data: object): DocumentPost {
 		return new DocumentPost(
 			data["id"],

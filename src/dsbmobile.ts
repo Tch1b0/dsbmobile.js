@@ -111,6 +111,9 @@ export class Dsbmobile {
 		this.token = res.data;
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return {
 			id: this.id,
@@ -120,6 +123,11 @@ export class Dsbmobile {
 		};
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new `Dsbmobile` instance
+	 */
 	public static fromJSON(data: object): Dsbmobile {
 		return new Dsbmobile(
 			data["id"],
