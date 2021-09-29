@@ -18,6 +18,9 @@ export class NewsPost {
 		return new NewsPost(json["title"], date, json["detail"]);
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return {
 			title: this.title,
@@ -26,6 +29,11 @@ export class NewsPost {
 		};
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new `NewsPost` instance
+	 */
 	public static fromJSON(data: object): NewsPost {
 		return new NewsPost(data["title"], data["date"], data["detail"]);
 	}

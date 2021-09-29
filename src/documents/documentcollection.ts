@@ -53,10 +53,18 @@ export class DocumentPostCollection {
 		return this.posts.filter((post) => post.previewUrl === previewUrl);
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return { posts: this.posts };
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new DocumentPostCollection
+	 */
 	public static fromJSON(data: object): DocumentPostCollection {
 		let posts: DocumentPost[] = [];
 		for (let post of data["posts"]) {

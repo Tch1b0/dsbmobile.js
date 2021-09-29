@@ -127,12 +127,20 @@ export class TimeTable {
 		return new TimeTable(entries);
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return {
 			entries: this.entries,
 		};
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new `TimeTable` instance
+	 */
 	public static fromJSON(data: object): TimeTable {
 		let entries: Entry[] = [];
 		for (let entry of data["entries"]) {

@@ -135,6 +135,9 @@ export class Entry {
 		return subjectLong;
 	}
 
+	/**
+	 * @returns This object as a `JSON` representation
+	 */
 	public toJSON(): object {
 		return {
 			date: this.date,
@@ -150,6 +153,11 @@ export class Entry {
 		};
 	}
 
+	/**
+	 * Create a new instance from `JSON`
+	 * @param data The `JSON` data
+	 * @returns A new `Entry` instance
+	 */
 	public static fromJSON(data: object): Entry {
 		return new Entry(
 			data["date"],
