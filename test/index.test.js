@@ -23,7 +23,8 @@ describe("Test DSBmobile Wrapper", () => {
 		const ds = new Dsbmobile(
 			"testUser",
 			"testPassword",
-			"https://mobileapi.dsbcontrol.de",
+			undefined,
+			undefined,
 			"1234"
 		);
 		const t = await ds.getTimetable();
