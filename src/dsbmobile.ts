@@ -28,6 +28,7 @@ export class Dsbmobile {
 		public readonly id: string,
 		public readonly password: string,
 		public readonly baseURL: string = "https://mobileapi.dsbcontrol.de",
+		public readonly resourceApiURL: string = "https://light.dsbcontrol.de",
 		token?: string
 	) {
 		let axiosInstance = axios.create({
@@ -53,9 +54,13 @@ export class Dsbmobile {
 			`/dsbtimetables?authid=${this.token}`
 		);
 
-		let ttURL = resp.data[0]["Childs"][0]["Detail"];
-
-		resp = await this.requester.get(ttURL);
+		let resURL: string = resp.data[0]["Childs"][0]["Detail"];
+		resURL = resURL.replace(
+			"https://light.dsbcontrol.de",
+			this.resourceApiURL
+		);
+		console.log(resURL);
+		resp = await this.requester.get(resURL);
 
 		return TimeTable.fromHtml(resp.data);
 	}
