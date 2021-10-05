@@ -59,7 +59,7 @@ export class Dsbmobile {
 			"https://light.dsbcontrol.de",
 			this.resourceApiURL
 		);
-		console.log(resURL);
+
 		resp = await this.requester.get(resURL);
 
 		return TimeTable.fromHtml(resp.data);
@@ -87,7 +87,7 @@ export class Dsbmobile {
 		);
 
 		let documents: DocumentPost[] = [];
-		console.log(resp.data);
+
 		for (let i of resp.data) {
 			for (let rawPost of i["Childs"]) {
 				documents.push(DocumentPost.fromApiResponse(rawPost));
