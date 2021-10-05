@@ -107,12 +107,17 @@ export class TimeTable {
 
 				var columns = $(row).find("td");
 
+				let period = $(columns[1]).text();
+				if (period.includes("-")) {
+					period = period.split("-")[0];
+				}
+
 				entries.push(
 					new Entry(
 						date,
 						day,
 						$(columns[0]).text().split(" "),
-						Number($(columns[1]).text()),
+						Number(period),
 						$(columns[2]).text(),
 						$(columns[3]).text(),
 						$(columns[4]).text(),
