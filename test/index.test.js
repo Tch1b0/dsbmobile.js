@@ -1,9 +1,9 @@
 const should = require("chai").should();
-const Dsbmobile = require("../dist/index").Dsbmobile;
-const { Entry } = require("../dist/entry");
+const Dsbmobile = require("../dist").default;
+const { Entry } = require("../dist");
 const nock = require("nock");
 const fs = require("fs");
-
+console.log(Dsbmobile);
 const sampleHtml = fs.readFileSync("test/sample", { encoding: "utf-8" });
 
 var entries;
