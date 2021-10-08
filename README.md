@@ -14,7 +14,7 @@ $ npm install dsbmobile
 ## Example
 
 ```js
-import { Dsbmobile } from "dsbmobile";
+import Dsbmobile from "dsbmobile";
 
 let dm = new Dsbmobile(name, password);
 
