@@ -10,7 +10,7 @@ import axios, { AxiosResponse } from "axios";
 import { NewsPost } from "./news/newspost";
 import { Requester } from "./requester";
 
-export class Dsbmobile {
+export default class Dsbmobile {
 	requester: Requester;
 	token!: string;
 
