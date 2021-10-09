@@ -41,12 +41,12 @@ Use https://mydsb.johannespour.de ([also on Github](https://github.com/Tch1b0/ds
 You can use it like this like this:
 
 ```js
-new Dsbmobile(
-	"<id>",
-	"<password>",
-	"https://mydsb.johannespour.de",
-	"https://mydsb.johannespour.de/light"
-);
+new Dsbmobile({
+	id: "<id>",
+	password: "<password>",
+	baseURL: "https://mydsb.johannespour.de",
+	resourceApiURL: "https://mydsb.johannespour.de/light",
+});
 ```
 
 After that, all requests will not be sent to the official Server, but to the mydsb.johannespour.de one, which will make a request for you to the resource and add a CORS header.
