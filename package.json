@@ -27,7 +27,6 @@
 		"@types/node": "^16.10.3",
 		"axios": "^0.21.4",
 		"cheerio": "^1.0.0-rc.10",
-		"htmlparser": "^1.7.7",
 		"typescript": "^4.4.3"
 	},
 	"devDependencies": {
