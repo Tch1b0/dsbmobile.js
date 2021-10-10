@@ -34,7 +34,7 @@ You can read the docs [on this Github Wiki](https://github.com/Tch1b0/dsbmobile.
 
 ## Contribute
 
-You are free contribute [on the Github repository](https://github.com/Tch1b0/dsbmobile.js).
+Feel free to contribute [on the Github repository](https://github.com/Tch1b0/dsbmobile.js).
 
 ## Browser issues
 
