@@ -4,7 +4,7 @@
 ![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/Test%20Package)
 ![badge](https://img.shields.io/github/issues/Tch1b0/dsbmobile.js)
 
-A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) api
+A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) API
 
 ## Installation
 
@@ -27,6 +27,14 @@ console.log(t.entries[0].newSubject);
 ```
 English
 ```
+
+## Documentation
+
+You can read the docs [on this Github Wiki](https://github.com/Tch1b0/dsbmobile.js/wiki).
+
+## Contribute
+
+You are free contribute [on the Github repository](https://github.com/Tch1b0/dsbmobile.js).
 
 ## Browser issues
 
