@@ -46,11 +46,11 @@ export class DocumentPostCollection {
 
 	/**
 	 * Find a certain `DocumentPost` by its preview url
-	 * @param previewUrl The preview url you want to search for
+	 * @param previewURL The preview url you want to search for
 	 * @returns An Array of `DocumentPost`s
 	 */
-	public findByPreview(previewUrl: string): DocumentPost[] {
-		return this.posts.filter((post) => post.previewUrl === previewUrl);
+	public findByPreview(previewURL: string): DocumentPost[] {
+		return this.posts.filter((post) => post.previewURL === previewURL);
 	}
 
 	/**

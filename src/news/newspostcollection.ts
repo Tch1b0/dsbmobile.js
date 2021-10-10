@@ -1,12 +1,26 @@
 import { NewsPost } from ".";
 
 /**
- * The ressource **NewsPostCollection**.
+ * The resource **NewsPostCollection**.
  *
  * Used to interact with the `NewsPost`s
  */
 export class NewsPostCollection {
-	constructor(public readonly news: NewsPost[]) {}
+	/**
+	 * The `NewsPost`s
+	 */
+	public readonly posts: NewsPost[];
+
+	/**
+	 * The `NewsPost`s
+	 * @deprecated Use `posts` instead
+	 */
+	public readonly news: NewsPost[];
+
+	constructor(posts: NewsPost[]) {
+		this.posts = posts;
+		this.news = posts;
+	}
 
 	/**
 	 * Find `NewsPost`s by their title

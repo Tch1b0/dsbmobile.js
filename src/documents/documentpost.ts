@@ -1,29 +1,42 @@
 import { parseDate } from "../utility";
 
 export class DocumentPost {
+	/**
+	 * The URL for the preview
+	 */
+	public readonly previewURL: string;
+	/**
+	 * The URL for the preview
+	 * @deprecated Use `previewURL` instead
+	 */
+	public readonly previewUrl: string;
+
 	constructor(
 		public readonly id: string,
 		public readonly title: string,
 		public readonly date: Date,
 		public readonly url: string,
-		public readonly previewUrl: string
-	) {}
+		previewURL: string
+	) {
+		this.previewURL = previewURL;
+		this.previewUrl = previewURL;
+	}
 
 	/**
-	 * Create a new Document post from the json structure of the dsb backend
+	 * Create a new `DocumentPost` from the json structure of the dsb backend
 	 * @param data The `JSON` data
-	 * @returns A new DocumentPost instance
+	 * @returns A new `DocumentPost` instance
 	 */
 	public static fromApiResponse(data: object): DocumentPost {
 		let date = parseDate(data["Date"]);
-		let previewUrl = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${data["Preview"]}`;
+		let previewURL = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${data["Preview"]}`;
 
 		return new DocumentPost(
 			data["Id"],
 			data["Title"],
 			date,
 			data["Detail"],
-			previewUrl
+			previewURL
 		);
 	}
 
@@ -36,7 +49,7 @@ export class DocumentPost {
 			title: this.title,
 			date: this.date,
 			url: this.url,
-			"preview-url": this.previewUrl,
+			"preview-url": this.previewURL,
 		};
 	}
 

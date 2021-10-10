@@ -1,10 +1,9 @@
 import {
 	DocumentPost,
 	DocumentPostCollection,
-	MissingToken,
 	NewsPostCollection,
 	TimeTable,
-	WrongCredentials,
+	MissingToken,
 } from ".";
 import axios, { AxiosResponse } from "axios";
 import { NewsPost } from "./news/newspost";
@@ -14,10 +13,35 @@ import { Requester } from "./requester";
  * The configuration Object for a `Dsbmobile` instance
  */
 export interface DsbmobileConfig {
+	/**
+	 * The id/username you need to fetch your token
+	 */
 	id?: string;
+
+	/**
+	 * The password you need to fetch your token
+	 */
 	password?: string;
+
+	/**
+	 * The base-url of the dsbmobile API you want to use
+	 */
 	baseURL?: string;
+
+	/**
+	 * The base-url for the dsbmobile-resource API you want to use
+	 * @deprecated Use `resourceBaseURL` instead
+	 */
 	resourceApiURL?: string;
+
+	/**
+	 * The base-url for the dsbmobile-resource API you want to use
+	 */
+	resourceBaseURL?: string;
+
+	/**
+	 * The token you need to make requests. Can be fetched when id and password are declared
+	 */
 	token?: string;
 }
 
@@ -27,7 +51,7 @@ export default class Dsbmobile {
 	public readonly id!: string;
 	public readonly password!: string;
 	public baseURL: string = "https://mobileapi.dsbcontrol.de";
-	public resourceApiURL: string = "https://light.dsbcontrol.de";
+	public resourceBaseURL: string = "https://light.dsbcontrol.de";
 
 	/**
 	 * Create a new DSBmobile wrapper
@@ -43,7 +67,7 @@ export default class Dsbmobile {
 		id?: string,
 		password?: string,
 		baseURL?: string,
-		resourceApiURL?: string,
+		resourceBaseURL?: string,
 		token?: string
 	);
 
@@ -76,7 +100,9 @@ export default class Dsbmobile {
 		if (config.password !== undefined) this.password = config.password;
 		if (config.baseURL !== undefined) this.baseURL = config.baseURL;
 		if (config.resourceApiURL !== undefined)
-			this.resourceApiURL = config.resourceApiURL;
+			this.resourceBaseURL = config.resourceApiURL;
+		if (config.resourceBaseURL !== undefined)
+			this.resourceBaseURL = config.resourceBaseURL;
 		if (config.token !== undefined) this.token = config.token;
 
 		// Create a new Axios instance from the baseURL
@@ -95,10 +121,11 @@ export default class Dsbmobile {
 
 	/**
 	 * Get your current **Timetable**
-	 * @returns A new `TimeTable` ressource
-	 * @throws
+	 * @throws `MissingToken` if the token isn't declared
+	 * @returns A new `TimeTable` resource
 	 */
 	public async getTimetable(): Promise<TimeTable> {
+		this.checkToken();
 		let resp = await this.requester.get(
 			`/dsbtimetables?authid=${this.token}`
 		);
@@ -106,7 +133,7 @@ export default class Dsbmobile {
 		let resURL: string = resp.data[0]["Childs"][0]["Detail"];
 		resURL = resURL.replace(
 			"https://light.dsbcontrol.de",
-			this.resourceApiURL
+			this.resourceBaseURL
 		);
 
 		resp = await this.requester.get(resURL);
@@ -116,9 +143,11 @@ export default class Dsbmobile {
 
 	/**
 	 * Get your current **News Tab**
+	 * @throws `MissingToken` if the token isn't declared
 	 * @returns A new `NewsPostCollection`
 	 */
 	public async getNewsPosts(): Promise<NewsPostCollection> {
+		this.checkToken();
 		let resp = await this.requester.get(`/newstab?authid=${this.token}`);
 
 		let news: NewsPost[] = [];
@@ -132,9 +161,11 @@ export default class Dsbmobile {
 
 	/**
 	 * Get your current **Document Posts**
+	 * @throws `MissingToken` if the token isn't declared
 	 * @returns A new `DocumentPostCollection`
 	 */
 	public async getDocumentPosts(): Promise<DocumentPostCollection> {
+		this.checkToken();
 		let resp = await this.requester.get(
 			`/dsbdocuments?authid=${this.token}`
 		);
@@ -153,20 +184,26 @@ export default class Dsbmobile {
 	/**
 	 * Fetch your token.
 	 * The token is stored in this object
+	 * @throws `WrongCredentials` if the credentials aren't right
 	 */
 	public async fetchToken() {
 		let res: AxiosResponse;
 
-		try {
-			res = await this.requester.get(
-				"/authid?bundleid=de.heinekingmedia.dsbmobile&appversion=35&osversion=22&pushid" +
-					`&user=${this.id}&password=${this.password}`
-			);
-		} catch (e) {
-			throw new WrongCredentials();
-		}
+		res = await this.requester.get(
+			"/authid?bundleid=de.heinekingmedia.dsbmobile&appversion=35&osversion=22&pushid" +
+				`&user=${this.id}&password=${this.password}`
+		);
 
 		this.token = res.data;
+	}
+
+	/**
+	 * Check wether the token is existing and throw an Error if not
+	 */
+	private checkToken() {
+		if (this.token === undefined) {
+			throw new MissingToken();
+		}
 	}
 
 	/**

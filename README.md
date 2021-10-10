@@ -43,7 +43,7 @@ new Dsbmobile({
 	id: "<id>",
 	password: "<password>",
 	baseURL: "https://mydsb.johannespour.de",
-	resourceApiURL: "https://mydsb.johannespour.de/light",
+	resourceBaseURL: "https://mydsb.johannespour.de/light",
 });
 ```
 
