@@ -28,3 +28,9 @@ export class UnknownSubject extends Error {
 		);
 	}
 }
+
+export class ServerError extends Error {
+	constructor() {
+		super("the API Server ran into some issues");
+	}
+}
