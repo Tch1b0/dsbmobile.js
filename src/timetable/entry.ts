@@ -127,7 +127,7 @@ export class Entry {
 		let subjectLong = subjectShorts[subjectShort];
 
 		if (subjectLong === undefined) {
-			throw new UnknownSubject();
+			throw new UnknownSubject(subjectShort);
 		}
 
 		return subjectLong;

@@ -13,7 +13,7 @@ export class WrongCredentials extends Error {
 export class MissingToken extends Error {
 	constructor() {
 		super(
-			"there was no Token found. If you called this method just before creating an API ressource, you may have to wait until it is finished."
+			"there was no Token found. If you called this method just before creating an API resource, you may have to wait until it is finished."
 		);
 	}
 }
@@ -22,9 +22,9 @@ export class MissingToken extends Error {
  * Thrown if a subject-short is not known
  */
 export class UnknownSubject extends Error {
-	constructor() {
+	constructor(subject: string) {
 		super(
-			"the Subject you are looking for isn't registered yet. Please contact one of the contribtors of the project"
+			`the Subject "${subject}" wasn't registered yet. Please contact one of the contributors of the project. The repository: https://github.com/Tch1b0/dsbmobile.js`
 		);
 	}
 }

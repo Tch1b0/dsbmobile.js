@@ -53,7 +53,7 @@ describe("Test components(classes)", () => {
 			title: "Title",
 			date: new Date(),
 			url: "Url",
-			"preview-url": "previewUrl",
+			"preview-url": "previewURL",
 		};
 		const post = DocumentPost.fromJSON(data);
 
@@ -62,7 +62,7 @@ describe("Test components(classes)", () => {
 		expect(post.title).to.be.a("string").and.equal(data["title"]);
 		expect(post.date).to.be.a("date").and.equal(data["date"]);
 		expect(post.url).to.be.a("string").and.equal(data["url"]);
-		expect(post.previewUrl)
+		expect(post.previewURL)
 			.to.be.a("string")
 			.and.equal(data["preview-url"]);
 	});

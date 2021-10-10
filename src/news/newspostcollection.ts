@@ -1,12 +1,26 @@
 import { NewsPost } from ".";
 
 /**
- * The ressource **NewsPostCollection**.
+ * The resource **NewsPostCollection**.
  *
  * Used to interact with the `NewsPost`s
  */
 export class NewsPostCollection {
-	constructor(public readonly news: NewsPost[]) {}
+	/**
+	 * The `NewsPost`s
+	 */
+	public readonly posts: NewsPost[];
+
+	/**
+	 * The `NewsPost`s
+	 * @deprecated Use `posts` instead
+	 */
+	public readonly news: NewsPost[];
+
+	constructor(posts: NewsPost[]) {
+		this.posts = posts;
+		this.news = posts;
+	}
 
 	/**
 	 * Find `NewsPost`s by their title
@@ -14,7 +28,7 @@ export class NewsPostCollection {
 	 * @returns An array of `NewsPost`s
 	 */
 	public findByTitle(title: string): NewsPost[] {
-		return this.news.filter((news) => news.title === title);
+		return this.posts.filter((news) => news.title === title);
 	}
 
 	/**
@@ -23,7 +37,7 @@ export class NewsPostCollection {
 	 * @returns An Array of `NewsPost`s
 	 */
 	public findByDate(date: Date): NewsPost[] {
-		return this.news.filter(
+		return this.posts.filter(
 			(news) =>
 				news.date.getFullYear() === date.getFullYear() &&
 				news.date.getMonth() === date.getMonth() &&
@@ -37,7 +51,7 @@ export class NewsPostCollection {
 	 * @returns An array of `NewsPost`s
 	 */
 	public findByDetail(detail: string): NewsPost[] {
-		return this.news.filter((news) => news.detail === detail);
+		return this.posts.filter((news) => news.detail === detail);
 	}
 
 	/**
@@ -45,7 +59,7 @@ export class NewsPostCollection {
 	 */
 	public toJSON(): object {
 		return {
-			news: this.news,
+			posts: this.posts,
 		};
 	}
 
@@ -55,11 +69,11 @@ export class NewsPostCollection {
 	 * @returns A new `NewsPostCollection`
 	 */
 	public static fromJSON(data: object): NewsPostCollection {
-		let newsArr: NewsPost[] = [];
-		for (let news of data["news"]) {
-			newsArr.push(NewsPost.fromJSON(news));
+		let postArr: NewsPost[] = [];
+		for (let posts of data["posts"]) {
+			postArr.push(NewsPost.fromJSON(posts));
 		}
 
-		return new NewsPostCollection(newsArr);
+		return new NewsPostCollection(postArr);
 	}
 }

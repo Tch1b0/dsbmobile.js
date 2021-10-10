@@ -2,7 +2,7 @@ import { Entry } from "./entry";
 import cheerio from "cheerio";
 
 /**
- * The time table ressource
+ * The time table resource
  */
 export class TimeTable {
 	constructor(public readonly entries: Entry[]) {}
@@ -67,7 +67,7 @@ export class TimeTable {
 	/**
 	 * Create a new `TimeTable` from HTML
 	 * @param rawHtml The raw html string
-	 * @returns A new `TimeTable` ressource
+	 * @returns A new `TimeTable` resource
 	 */
 	static fromHtml(rawHtml: string) {
 		const $ = cheerio.load(rawHtml);
