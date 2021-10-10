@@ -4,5 +4,14 @@
   "tabWidth": 4,
   "bracketSpacing": true,
   "arrowParens": "always",
-  "singleQuote": false
+  "singleQuote": false,
+
+  "overrides": [
+    {
+      "files": ["*.yml"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
 }
