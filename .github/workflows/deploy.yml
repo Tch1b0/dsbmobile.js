@@ -1,0 +1,25 @@
+name: Deploy to npm
+
+on:
+  # Fire when new release is created
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.4.1
+        with:
+          # Declare the registry where the package will be published
+          registry-url: https://registry.npmjs.org/
+
+      # Install, Build and Deploy the package
+      - run: |
+          npm ci || npm install
+          npm run build
+          npm publish
+        env:
+          # Get the NODE_AUTH_TOKEN from the npm_token secret on Github
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
