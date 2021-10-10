@@ -51,9 +51,7 @@ describe("Test DSBmobile Wrapper", () => {
 		expect(t.findByClassName("TGM11/1")).to.be.a("array");
 		expect(t.findByRoom("020")).to.be.a("array");
 
-		// Add the next line when Issue #20 is finished
-		// expect(t.findBySubjectLong("Chemie")).to.be.a("array");
-
+		expect(t.findBySubjectLong("Chemie")).to.be.a("array");
 		expect(t.findBySubjectShort("E")).to.be.a("array");
 
 		return;

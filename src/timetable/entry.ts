@@ -91,36 +91,34 @@ export class Entry {
 	}
 
 	private longSubjectName(subjectShort: string): string {
+		const validReg = /[a-bA-b]/;
+		if (!validReg.test(subjectShort)) {
+			return subjectShort;
+		}
+
+		const replaceReg = /([0-9]|\/).*$/;
+		subjectShort = subjectShort.replace(replaceReg, "");
+
 		const subjectShorts = {
 			D: "Deutsch",
 			E: "Englisch",
 			WI: "Wirtschaft",
 			GGK: "Geschichte und Gemeinschaftskunde",
 			CH: "Chemie",
-			S1: "Sport",
-			S2: "Sport",
-			S3: "Sport",
-			S4: "Sport",
+			S: "Sport",
 			M: "Mathe",
 			BK: "Bildende Kunst",
 			BK1: "Bildende Kunst",
 			BK2: "Bildende Kunst",
 			GS: "Global Studies",
-			GS1: "Global Studies",
-			GS2: "Global Studies",
 			PH: "Physik",
 			IT: "Informatik",
 			INF: "Informationstechnik",
 			ITÜS: "IT Softwareentwicklung",
 			ITÜH: "IT Hardware",
-			EVR1: "Religion",
-			EVR2: "Religion",
-			ETH1: "Ethik",
-			ETH2: "Ethik",
-			"SP/B1": "Zweitsprache",
-			"SP/B2": "Zweitsprache",
-			"SP/B3": "Zweitsprache",
-			"SP/B4": "Zweitsprache",
+			EVR: "Religion",
+			ETH: "Ethik",
+			SP: "Zweitsprache",
 			IFÖM: "Mathe Förderunterricht",
 			IFÖE: "Englisch Förderunterricht",
 			IFÖD: "Deutsch Förderunterricht",
