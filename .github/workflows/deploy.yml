@@ -15,11 +15,14 @@ jobs:
           # Declare the registry where the package will be published
           registry-url: https://registry.npmjs.org/
 
-      # Install, Build and Deploy the package
-      - run: |
-          npm ci || npm install
-          npm run build
-          npm publish
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Publish project
+        run: npm publish
         env:
           # Get the NODE_AUTH_TOKEN from the npm_token secret on Github
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
