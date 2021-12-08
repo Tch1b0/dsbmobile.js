@@ -1,6 +1,6 @@
 {
 	"name": "dsbmobile",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "A Javascript wrapper for the dsbmobile api",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -24,12 +24,12 @@
 	},
 	"homepage": "https://github.com/Tch1b0/dsbmobile.js#readme",
 	"dependencies": {
-		"@types/node": "^16.10.3",
 		"axios": "^0.21.4",
-		"cheerio": "^1.0.0-rc.10",
-		"typescript": "^4.4.3"
+		"cheerio": "^1.0.0-rc.10"
 	},
 	"devDependencies": {
+		"typescript": "^4.4.3",
+		"@types/node": "^16.10.3",
 		"@types/mocha": "^9.0.0",
 		"chai": "^4.3.4",
 		"mocha": "^9.1.1",
