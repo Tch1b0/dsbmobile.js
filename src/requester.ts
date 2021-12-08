@@ -8,7 +8,7 @@ export class Requester {
 	public async get(uri: string, config: AxiosRequestConfig = {}) {
 		// Typescript compiler doesn't like it that `resp` is used in the try/catch block
 		// thats why the type declaration here is `any`
-		var resp: any;
+		let resp: any;
 
 		try {
 			resp = await this.axiosInstance.get(uri, config);

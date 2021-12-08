@@ -72,14 +72,14 @@ export class TimeTable {
 	static fromHtml(rawHtml: string) {
 		const $ = cheerio.load(rawHtml);
 
-		var centers = $("center");
-		var entries: Entry[] = [];
+		let centers = $("center");
+		let entries: Entry[] = [];
 
-		for (var center of centers) {
+		for (let center of centers) {
 			if (center.children.length <= 1) {
 				continue;
 			}
-			var day = $(center)
+			let day = $(center)
 				.find(".mon_title")
 				.text()
 				.replace(",", "")
@@ -92,7 +92,7 @@ export class TimeTable {
 				.split(".");
 
 			// Create new date from text
-			var date = new Date(
+			let date = new Date(
 				Number(rawDate[2]),
 				Number(rawDate[1]) - 1, // Those are some small adjustments
 				Number(rawDate[0]) + 1, //
@@ -102,10 +102,10 @@ export class TimeTable {
 				0
 			);
 
-			for (var row of $(center).find("tr")) {
+			for (let row of $(center).find("tr")) {
 				if ($(row).find("th").length !== 0) continue;
 
-				var columns = $(row).find("td");
+				let columns = $(row).find("td");
 
 				let period = $(columns[1]).text();
 				if (period.includes("-")) {

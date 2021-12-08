@@ -11,7 +11,7 @@ const timetableSample = fs.readFileSync("./test/samples/timetable-sample", {
 	encoding: "utf-8",
 });
 
-var entries: Entry[] = [];
+let entries: Entry[] = [];
 
 describe("Test DSBmobile Wrapper", () => {
 	before(() => {
