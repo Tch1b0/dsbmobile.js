@@ -20,12 +20,10 @@ export class Requester {
 	}
 
 	private processStatusCode(statusCode: number) {
-		switch (statusCode) {
-			case 500 || 501 || 502 || 503 || 504 || 505:
-				throw new ServerError();
-
-			default:
-				throw new WrongCredentials();
+		if (statusCode.toString().startsWith("5")) {
+			throw new ServerError();
+		} else if (statusCode == 401) {
+			throw new WrongCredentials();
 		}
 	}
 }
