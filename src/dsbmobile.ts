@@ -96,14 +96,12 @@ export default class Dsbmobile {
 		}
 
 		// Check wether attributes are undefined and adapt them if not
-		if (config.id !== undefined) this.id = config.id;
-		if (config.password !== undefined) this.password = config.password;
-		if (config.baseURL !== undefined) this.baseURL = config.baseURL;
-		if (config.resourceApiURL !== undefined)
-			this.resourceBaseURL = config.resourceApiURL;
-		if (config.resourceBaseURL !== undefined)
-			this.resourceBaseURL = config.resourceBaseURL;
-		if (config.token !== undefined) this.token = config.token;
+		this.id = config.id || this.id;
+		this.password = config.password || this.password;
+		this.baseURL = config.baseURL || this.baseURL;
+		this.resourceBaseURL = config.resourceBaseURL || this.resourceBaseURL;
+		this.resourceBaseURL = config.resourceBaseURL || this.resourceBaseURL;
+		this.token = config.token || this.token;
 
 		// Create a new Axios instance from the baseURL
 		let axiosInstance = axios.create({
