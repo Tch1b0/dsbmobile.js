@@ -53,8 +53,6 @@ describe("Test DSBmobile Wrapper", () => {
 
 		expect(t.findBySubjectLong("Chemie")).to.be.a("array");
 		expect(t.findBySubjectShort("E")).to.be.a("array");
-
-		return;
 	});
 
 	before(() => {
@@ -72,8 +70,8 @@ describe("Test DSBmobile Wrapper", () => {
 
 		const newsCollection = await ds.getNewsPosts();
 
-		expect(newsCollection.news.length).to.equal(2);
-		expect(newsCollection.news[0]).to.be.a("object");
+		expect(newsCollection.posts.length).to.equal(2);
+		expect(newsCollection.posts[0]).to.be.a("object");
 
 		expect(newsCollection.findByTitle("Test Title")).to.be.a("array");
 		expect(newsCollection.findByDate(new Date())).to.be.a("array");
