@@ -1,6 +1,6 @@
 {
 	"name": "dsbmobile",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "A Javascript wrapper for the dsbmobile api",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
