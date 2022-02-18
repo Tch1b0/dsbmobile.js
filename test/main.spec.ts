@@ -56,7 +56,7 @@ describe("Test DSBmobile Wrapper", () => {
 
 		expect(
 			t.findByClassName("TGM13/1")[0].className
-		).to.have.length.greaterThan(3);
+		).to.have.length.greaterThan(1);
 	});
 
 	before(() => {
