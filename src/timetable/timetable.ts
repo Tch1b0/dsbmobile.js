@@ -64,6 +64,10 @@ export class TimeTable {
 		);
 	}
 
+	public static cleanedString(str: string): string {
+		return str.replace(/\t|\n/g, "");
+	}
+
 	/**
 	 * Create a new `TimeTable` from HTML
 	 * @param rawHtml The raw html string
@@ -116,14 +120,16 @@ export class TimeTable {
 					new Entry(
 						date,
 						day,
-						$(columns[0]).text().split(" "),
+						this.cleanedString($(columns[0]).text()).split(
+							/\, |\,/
+						),
 						Number(period),
-						$(columns[2]).text(),
-						$(columns[3]).text(),
-						$(columns[4]).text(),
-						$(columns[5]).text(),
-						$(columns[6]).text(),
-						$(columns[7]).text()
+						this.cleanedString($(columns[2]).text()),
+						this.cleanedString($(columns[3]).text()),
+						this.cleanedString($(columns[4]).text()),
+						this.cleanedString($(columns[5]).text()),
+						this.cleanedString($(columns[6]).text()),
+						this.cleanedString($(columns[7]).text())
 					)
 				);
 			}
