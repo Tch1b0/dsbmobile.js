@@ -53,6 +53,10 @@ describe("Test DSBmobile Wrapper", () => {
 
 		expect(t.findBySubjectLong("Chemie")).to.be.a("array");
 		expect(t.findBySubjectShort("E")).to.be.a("array");
+
+		expect(
+			t.findByClassName("TGM13/1")[0].className
+		).to.have.length.greaterThan(3);
 	});
 
 	before(() => {
