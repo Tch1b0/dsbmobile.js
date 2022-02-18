@@ -98,8 +98,8 @@ export class TimeTable {
 			// Create new date from text
 			let date = new Date(
 				Number(rawDate[2]),
-				Number(rawDate[1]) - 1, // Those are some small adjustments
-				Number(rawDate[0]) + 1, //
+				Number(rawDate[1]),
+				Number(rawDate[0]),
 				0,
 				0,
 				0,

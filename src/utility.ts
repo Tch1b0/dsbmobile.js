@@ -12,7 +12,7 @@ export function parseDate(rawDate: string): Date {
 
 	return new Date(
 		Number(rawActualDateSplit[2]),
-		Number(rawActualDateSplit[1]) - 1,
+		Number(rawActualDateSplit[1]),
 		Number(rawActualDateSplit[0]),
 		Number(rawTimeSplit[0]),
 		Number(rawTimeSplit[1])
