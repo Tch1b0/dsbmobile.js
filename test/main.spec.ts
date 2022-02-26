@@ -86,6 +86,14 @@ describe("Test DSBmobile Wrapper", () => {
 		expect(newsCollection.findByDate(new Date())).to.be.a("array");
 		expect(newsCollection.findByDetail("Test Detail")).to.be.a("array");
 		expect(newsCollection.toJSON()).to.be.a("object");
+
+		expect(["12.4.2021", "4/12/2021"]).to.include(
+			newsCollection.posts[0].date.toLocaleDateString("de-DE")
+		);
+
+		expect(
+			newsCollection.posts[0].date.toLocaleTimeString("de-DE")
+		).to.equal("10:30:00");
 	});
 
 	before(() => {

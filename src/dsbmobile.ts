@@ -77,7 +77,7 @@ export default class Dsbmobile {
 	 */
 	constructor(config: DsbmobileConfig);
 
-	constructor(...args: Array<any>) {
+	constructor(...args: any[]) {
 		let config: DsbmobileConfig;
 
 		// If the DsbmobileConfig was passed as an argument
@@ -110,11 +110,6 @@ export default class Dsbmobile {
 
 		// Create a requester from the Axios instance
 		this.requester = new Requester(axiosInstance);
-
-		// Fetch the token if it is undefined
-		if (this.token === undefined) {
-			this.fetchToken();
-		}
 	}
 
 	/**
@@ -198,7 +193,8 @@ export default class Dsbmobile {
 	/**
 	 * Check wether the token is existing and throw an Error if not
 	 */
-	private checkToken() {
+	private async checkToken() {
+		await this.fetchToken();
 		if (this.token === undefined) {
 			throw new MissingToken();
 		}

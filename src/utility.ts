@@ -6,15 +6,15 @@
  * @returns A new `Date` instance
  */
 export function parseDate(rawDate: string): Date {
-	let rawSplitDate = rawDate.split(" ");
-	let rawActualDateSplit = rawSplitDate[0].split(".");
-	let rawTimeSplit = rawSplitDate[1].split(":");
+	const [date, time] = rawDate.split(" ");
+	const [dateDay, month, year] = date.split(".");
+	const [hours, minutes] = time.split(":");
 
 	return new Date(
-		Number(rawActualDateSplit[2]),
-		Number(rawActualDateSplit[1]),
-		Number(rawActualDateSplit[0]),
-		Number(rawTimeSplit[0]),
-		Number(rawTimeSplit[1])
+		Number(year),
+		Number(month) - 1,
+		Number(dateDay),
+		Number(hours),
+		Number(minutes)
 	);
 }
