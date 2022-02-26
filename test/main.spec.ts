@@ -91,9 +91,9 @@ describe("Test DSBmobile Wrapper", () => {
 			newsCollection.posts[0].date.toLocaleDateString("de-DE")
 		);
 
-		expect(
+		expect(["10:30:00", "10:30:00 AM"]).to.include(
 			newsCollection.posts[0].date.toLocaleTimeString("de-DE")
-		).to.equal("10:30:00");
+		);
 	});
 
 	before(() => {
