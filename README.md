@@ -1,7 +1,7 @@
 # dsbmobile.js
 
 ![badge](https://img.shields.io/github/license/Tch1b0/dsbmobile.js)
-![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/Test%20Package)
+![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/Test%20Package?label=unit%20tests)
 ![badge](https://img.shields.io/github/issues/Tch1b0/dsbmobile.js)
 
 A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) API
@@ -18,7 +18,6 @@ $ npm install dsbmobile
 import Dsbmobile from "dsbmobile";
 
 let dm = new Dsbmobile("<id>", "<password>");
-await dm.fetchToken();
 
 let t = await dm.getTimetable();
 console.log(t.entries[0].newSubject);
@@ -48,10 +47,10 @@ You can use it like this like this:
 
 ```js
 new Dsbmobile({
-	id: "<id>",
-	password: "<password>",
-	baseURL: "https://mydsb.johannespour.de",
-	resourceBaseURL: "https://mydsb.johannespour.de/light",
+    id: "<id>",
+    password: "<password>",
+    baseURL: "https://mydsb.johannespour.de",
+    resourceBaseURL: "https://mydsb.johannespour.de/light",
 });
 ```
 

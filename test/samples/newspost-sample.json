@@ -1,12 +1,12 @@
 [
-	{
-		"Title": "Test Title",
-		"Date": "12.04.21 10:30",
-		"Detail": "Test Detail"
-	},
-	{
-		"Title": "Second Test Title",
-		"Date": "12.04.21 10:50",
-		"Detail": "Second Test Detail"
-	}
+    {
+        "Title": "Test Title",
+        "Date": "12.04.2021 10:30",
+        "Detail": "Test Detail"
+    },
+    {
+        "Title": "Second Test Title",
+        "Date": "12.04.2021 10:50",
+        "Detail": "Second Test Detail"
+    }
 ]
