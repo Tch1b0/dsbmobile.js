@@ -59,7 +59,9 @@ describe("Test DSBmobile Wrapper", () => {
 		).to.have.length.greaterThan(1);
 
 		const date = t.findByClassName("M4PA1")[0].date;
-		expect(date.toLocaleDateString("de-DE")).to.equal("24.9.2021");
+		expect(["24.9.2021", "9/24/2021"]).to.include(
+			date.toLocaleDateString("de-DE")
+		);
 	});
 
 	before(() => {
