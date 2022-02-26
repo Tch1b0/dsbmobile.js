@@ -89,21 +89,17 @@ export class TimeTable {
 				.replace(",", "")
 				.split(" ")[1];
 
-			let rawDate = $(center)
+			let [dateDay, month, year] = $(center)
 				.find(".mon_title")
 				.text()
 				.split(" ")[0]
 				.split(".");
 
 			// Create new date from text
-			let date = new Date(
-				Number(rawDate[2]),
-				Number(rawDate[1]),
-				Number(rawDate[0]),
-				0,
-				0,
-				0,
-				0
+			const date = new Date(
+				Number(year),
+				Number(month) - 1,
+				Number(dateDay)
 			);
 
 			for (let row of $(center).find("tr")) {

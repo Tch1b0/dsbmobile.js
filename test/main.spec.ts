@@ -59,9 +59,7 @@ describe("Test DSBmobile Wrapper", () => {
 		).to.have.length.greaterThan(1);
 
 		const date = t.findByClassName("M4PA1")[0].date;
-		expect(date.getDay()).to.equal(24);
-		expect(date.getMonth()).to.equal(9);
-		expect(date.getFullYear()).to.equal(2021);
+		expect(date.toLocaleDateString("de-DE")).to.equal("24.9.2021");
 	});
 
 	before(() => {
