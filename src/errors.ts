@@ -34,3 +34,11 @@ export class ServerError extends Error {
 		super("the API Server ran into some issues");
 	}
 }
+
+export class UnknownFetchError extends Error {
+	constructor() {
+		super(
+			"something went wrong while trying to fetch data. Are you sure you entered the right credentials?"
+		);
+	}
+}

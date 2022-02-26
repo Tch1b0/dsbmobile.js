@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { WrongCredentials } from ".";
-import { ServerError } from "./errors";
+import { ServerError, UnknownFetchError } from "./errors";
 
 export class Requester {
 	constructor(public readonly axiosInstance: AxiosInstance) {}
@@ -13,7 +13,11 @@ export class Requester {
 		try {
 			resp = await this.axiosInstance.get(uri, config);
 		} catch {
-			this.processStatusCode(resp.status);
+			try {
+				this.processStatusCode(resp.status);
+			} catch {
+				throw new UnknownFetchError();
+			}
 		}
 
 		return resp;
