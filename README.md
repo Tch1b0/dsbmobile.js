@@ -47,10 +47,10 @@ You can use it like this like this:
 
 ```js
 new Dsbmobile({
-	id: "<id>",
-	password: "<password>",
-	baseURL: "https://mydsb.johannespour.de",
-	resourceBaseURL: "https://mydsb.johannespour.de/light",
+    id: "<id>",
+    password: "<password>",
+    baseURL: "https://mydsb.johannespour.de",
+    resourceBaseURL: "https://mydsb.johannespour.de/light",
 });
 ```
 

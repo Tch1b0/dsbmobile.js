@@ -1,20 +1,20 @@
 [
-	{
-		"Childs": [
-			{
-				"Id": 1,
-				"Title": "Test Title",
-				"Date": "12.04.2021 20:30",
-				"Detail": "Test Detail",
-				"Preview": "test"
-			},
-			{
-				"Id": 2,
-				"Title": "Second Test Title",
-				"Date": "13.04.2021 21:30",
-				"Detail": "Second Test Detail",
-				"Preview": "test"
-			}
-		]
-	}
+    {
+        "Childs": [
+            {
+                "Id": 1,
+                "Title": "Test Title",
+                "Date": "12.04.2021 20:30",
+                "Detail": "Test Detail",
+                "Preview": "test"
+            },
+            {
+                "Id": 2,
+                "Title": "Second Test Title",
+                "Date": "13.04.2021 21:30",
+                "Detail": "Second Test Detail",
+                "Preview": "test"
+            }
+        ]
+    }
 ]
