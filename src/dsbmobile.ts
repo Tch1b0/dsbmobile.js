@@ -118,7 +118,7 @@ export default class Dsbmobile {
      * @returns A new `TimeTable` resource
      */
     public async getTimetable(): Promise<TimeTable> {
-        this.checkToken();
+        await this.checkToken();
         let resp = await this.requester.get(
             `/dsbtimetables?authid=${this.token}`,
         );
@@ -140,7 +140,7 @@ export default class Dsbmobile {
      * @returns A new `NewsPostCollection`
      */
     public async getNewsPosts(): Promise<NewsPostCollection> {
-        this.checkToken();
+        await this.checkToken();
         let resp = await this.requester.get(`/newstab?authid=${this.token}`);
 
         let news: NewsPost[] = [];
@@ -158,7 +158,7 @@ export default class Dsbmobile {
      * @returns A new `DocumentPostCollection`
      */
     public async getDocumentPosts(): Promise<DocumentPostCollection> {
-        this.checkToken();
+        await this.checkToken();
         let resp = await this.requester.get(
             `/dsbdocuments?authid=${this.token}`,
         );
