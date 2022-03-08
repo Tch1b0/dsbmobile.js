@@ -95,7 +95,7 @@ export default class Dsbmobile {
             } as DsbmobileConfig;
         }
 
-        // Check wether attributes are undefined and adapt them if not
+        // Check whether attributes are undefined and adapt them if not
         this.id = config.id || this.id;
         this.password = config.password || this.password;
         this.baseURL = config.baseURL || this.baseURL;
@@ -189,7 +189,7 @@ export default class Dsbmobile {
     }
 
     /**
-     * Check wether the token is existing and throw an Error if not
+     * Check whether the token is existing and throw an Error if not
      */
     private async checkToken() {
         if (this.token === undefined) {
