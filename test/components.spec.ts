@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { DocumentPost, Entry, NewsPost } from "../dist";
+import { DocumentPost, Entry, NewsPost } from "../src";
 
 describe("Test components(classes)", () => {
     it("Create and test Entry", () => {

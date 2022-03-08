@@ -1,7 +1,7 @@
 import { expect } from "chai";
 
-import Dsbmobile from "../dist";
-import { Entry } from "../dist";
+import Dsbmobile from "../src";
+import { Entry } from "../src";
 
 import nock from "nock";
 import fs from "fs";
