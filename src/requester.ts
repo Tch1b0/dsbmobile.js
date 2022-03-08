@@ -3,16 +3,16 @@ import { WrongCredentials } from "@";
 import { ServerError, UnknownFetchError } from "@/errors";
 
 /**
- * the requester used to make requests to the dsbmobile-api
+ * The requester used to make requests to the dsbmobile-api
  */
 export class Requester {
     constructor(public readonly axiosInstance: AxiosInstance) {}
 
     /**
-     * get a certain resource
-     * @param uri the uri to send the request to
-     * @param config the axios-config to apply
-     * @returns the axios-response
+     * Get a certain resource
+     * @param uri The uri to send the request to
+     * @param config The axios-config to apply
+     * @returns The axios-response
      * @throws `ServerError`, `WrongCredentials` or `UnknownFetchError` when something goes wrong
      */
     public async get(uri: string, config: AxiosRequestConfig = {}) {
