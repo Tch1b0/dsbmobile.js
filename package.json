@@ -8,7 +8,7 @@
     "scripts": {
         "build": "tsc",
         "btest": "npm run build && npm test",
-        "test": "mocha --require ts-node/register ./test/*.spec.ts"
+        "test": "ts-mocha --config tsconfig.json --paths test/**/*.spec.ts"
     },
     "repository": {
         "type": "git",
@@ -29,14 +29,14 @@
         "cheerio": "^1.0.0-rc.10"
     },
     "devDependencies": {
+        "@tch1b0/prettier-config": "^1.0.0",
         "@types/chai": "^4.3.0",
         "@types/mocha": "^9.0.0",
         "@types/node": "^16.10.3",
         "chai": "^4.3.4",
         "mocha": "^9.1.1",
         "nock": "^13.1.3",
-        "ts-node": "^10.2.1",
-        "typescript": "^4.4.3",
-        "@tch1b0/prettier-config": "^1.0.0"
+        "ts-mocha": "^9.0.2",
+        "typescript": "^4.4.3"
     }
 }
