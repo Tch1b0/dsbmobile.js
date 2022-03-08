@@ -17,7 +17,7 @@ export class NewsPost {
      * @returns A new `NewsPost`
      */
     public static fromApiResponse(json: object): NewsPost {
-        let date = parseDate(json["Date"]);
+        const date = parseDate(json["Date"]);
 
         return new NewsPost(json["Title"], date, json["Detail"]);
     }

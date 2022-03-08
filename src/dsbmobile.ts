@@ -104,7 +104,7 @@ export default class Dsbmobile {
         this.token = config.token || this.token;
 
         // Create a new Axios instance from the baseURL
-        let axiosInstance = axios.create({
+        const axiosInstance = axios.create({
             baseURL: this.baseURL,
         });
 
@@ -141,11 +141,11 @@ export default class Dsbmobile {
      */
     public async getNewsPosts(): Promise<NewsPostCollection> {
         await this.checkToken();
-        let resp = await this.requester.get(`/newstab?authid=${this.token}`);
+        const resp = await this.requester.get(`/newstab?authid=${this.token}`);
 
-        let news: NewsPost[] = [];
+        const news: NewsPost[] = [];
 
-        for (let raw_news of resp.data) {
+        for (const raw_news of resp.data) {
             news.push(NewsPost.fromApiResponse(raw_news));
         }
 
@@ -159,14 +159,14 @@ export default class Dsbmobile {
      */
     public async getDocumentPosts(): Promise<DocumentPostCollection> {
         await this.checkToken();
-        let resp = await this.requester.get(
+        const resp = await this.requester.get(
             `/dsbdocuments?authid=${this.token}`,
         );
 
-        let documents: DocumentPost[] = [];
+        const documents: DocumentPost[] = [];
 
-        for (let i of resp.data) {
-            for (let rawPost of i["Childs"]) {
+        for (const i of resp.data) {
+            for (const rawPost of i["Childs"]) {
                 documents.push(DocumentPost.fromApiResponse(rawPost));
             }
         }
@@ -180,9 +180,7 @@ export default class Dsbmobile {
      * @throws `WrongCredentials` if the credentials aren't right
      */
     public async fetchToken() {
-        let res: AxiosResponse;
-
-        res = await this.requester.get(
+        const res = await this.requester.get(
             "/authid?bundleid=de.heinekingmedia.dsbmobile&appversion=35&osversion=22&pushid" +
                 `&user=${this.id}&password=${this.password}`,
         );

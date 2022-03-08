@@ -55,8 +55,8 @@ export class Entry {
      * Day, month, year, hour and minute of the lesson
      */
     get exactDateAndTime(): Date {
-        let exactDate = this.date;
-        let lessonTime = this.realTime;
+        const exactDate = this.date;
+        const lessonTime = this.realTime;
         exactDate.setMinutes(lessonTime.getMinutes());
         exactDate.setHours(lessonTime.getHours());
 
@@ -129,7 +129,7 @@ export class Entry {
             IFÖD: "Deutsch Förderunterricht",
         };
 
-        let subjectLong = subjectShorts[subjectShort];
+        const subjectLong = subjectShorts[subjectShort];
 
         if (subjectLong === undefined) {
             throw new UnknownSubject(subjectShort);

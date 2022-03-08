@@ -30,8 +30,8 @@ export class DocumentPost {
      * @returns A new `DocumentPost` instance
      */
     public static fromApiResponse(data: object): DocumentPost {
-        let date = parseDate(data["Date"]);
-        let previewURL = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${data["Preview"]}`;
+        const date = parseDate(data["Date"]);
+        const previewURL = `https://light.dsbcontrol.de/DSBlightWebsite/Data/${data["Preview"]}`;
 
         return new DocumentPost(
             data["Id"],
