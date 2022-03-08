@@ -1,8 +1,11 @@
-import { UnknownSubject } from "..";
+import { isText } from "@/utility";
+import { UnknownSubject } from "@";
 
 export class Entry {
+    public readonly date: Date;
+
     constructor(
-        public readonly date: Date,
+        date: Date | string,
         public readonly day: string,
         public readonly className: string[],
         public readonly period: number,
@@ -12,7 +15,9 @@ export class Entry {
         public readonly oldRoom: string,
         public readonly newRoom: string,
         public readonly description: string,
-    ) {}
+    ) {
+        this.date = isText(date) ? new Date(date) : date;
+    }
 
     /**
      * The entry only holds a `period` attribute, which does

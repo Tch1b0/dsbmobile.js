@@ -1,11 +1,15 @@
-import { parseDate } from "../utility";
+import { isText, parseDate } from "@/utility";
 
 export class NewsPost {
+    public readonly date: Date;
+
     constructor(
         public readonly title: string,
-        public readonly date: Date,
+        date: Date | string,
         public readonly detail: string,
-    ) {}
+    ) {
+        this.date = isText(date) ? new Date(date) : date;
+    }
 
     /**
      * Create a `NewsPost` object from JSON

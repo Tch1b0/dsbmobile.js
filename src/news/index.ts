@@ -1,2 +1,2 @@
-export { NewsPost } from "./newspost";
-export { NewsPostCollection } from "./newspostcollection";
+export { NewsPost } from "@/news/newspost";
+export { NewsPostCollection } from "@/news/newspostcollection";

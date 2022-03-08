@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "baseUrl": "src",
         "target": "es5",
         "noImplicitAny": false,
         "sourceMap": false,
@@ -10,7 +11,11 @@
         "esModuleInterop": true,
         "strict": true,
         "downlevelIteration": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "paths": {
+            "@": ["./"],
+            "@/*": ["./*"]
+        }
     },
     "include": ["src/**/*"]
 }

@@ -1,4 +1,4 @@
-import { Entry } from "./entry";
+import { Entry } from "@/timetable/entry";
 import cheerio from "cheerio";
 
 /**

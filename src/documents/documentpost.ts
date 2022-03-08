@@ -1,4 +1,4 @@
-import { parseDate } from "../utility";
+import { isText, parseDate } from "@/utility";
 
 export class DocumentPost {
     /**
@@ -10,16 +10,18 @@ export class DocumentPost {
      * @deprecated Use `previewURL` instead
      */
     public readonly previewUrl: string;
+    public readonly date: Date;
 
     constructor(
         public readonly id: string,
         public readonly title: string,
-        public readonly date: Date,
+        date: Date | string,
         public readonly url: string,
         previewURL: string,
     ) {
         this.previewURL = previewURL;
         this.previewUrl = previewURL;
+        this.date = isText(date) ? new Date(date) : date;
     }
 
     /**

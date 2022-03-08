@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { DocumentPost, Entry, NewsPost } from "../dist";
+import { DocumentPost, Entry, NewsPost } from "../src";
 
 describe("Test components(classes)", () => {
     it("Create and test Entry", () => {
@@ -26,9 +26,11 @@ describe("Test components(classes)", () => {
         const entry2 = Entry.fromJSON(data);
 
         try {
+            // `expect` beneath should throw an exception
             expect(entry2.longNewSubject).to.throw("UnknownSubject");
             throw new Error();
         } catch (e) {
+            // validate that expected exception got catched
             expect(true).to.equal(true);
         }
     });
@@ -45,6 +47,7 @@ describe("Test components(classes)", () => {
         expect(post.title).to.be.a("string").and.equal(data["title"]);
         expect(post.date).to.be.a("date").and.equal(data["date"]);
         expect(post.detail).to.be.a("string").and.equal(data["detail"]);
+        expect(NewsPost.fromJSON(post.toJSON()).date).be.instanceOf(Date);
     });
 
     it("Create and test DocumentPost", () => {
@@ -65,5 +68,6 @@ describe("Test components(classes)", () => {
         expect(post.previewURL)
             .to.be.a("string")
             .and.equal(data["preview-url"]);
+        expect(DocumentPost.fromJSON(post.toJSON()).date).be.instanceOf(Date);
     });
 });

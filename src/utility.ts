@@ -18,3 +18,12 @@ export function parseDate(rawDate: string): Date {
         Number(minutes),
     );
 }
+
+/**
+ * Validate that the first parameter is a string
+ * @param data the data to validate
+ * @returns whether the data is a string
+ */
+export function isText(data: any): data is string {
+    return typeof data === "string";
+}

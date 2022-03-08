@@ -4,10 +4,10 @@ import {
     NewsPostCollection,
     TimeTable,
     MissingToken,
-} from ".";
+} from "@";
 import axios, { AxiosResponse } from "axios";
-import { NewsPost } from "./news/newspost";
-import { Requester } from "./requester";
+import { NewsPost } from "@/news/newspost";
+import { Requester } from "@/requester";
 
 /**
  * The configuration Object for a `Dsbmobile` instance
@@ -194,9 +194,9 @@ export default class Dsbmobile {
      * Check wether the token is existing and throw an Error if not
      */
     private async checkToken() {
-        await this.fetchToken();
         if (this.token === undefined) {
-            throw new MissingToken();
+            await this.fetchToken();
+            if (this.token === undefined) throw new MissingToken();
         }
     }
 
