@@ -1,26 +1,28 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { WrongCredentials } from "@";
 import { ServerError, UnknownFetchError } from "@/errors";
 
+/**
+ * The requester used to make requests to the dsbmobile-api
+ */
 export class Requester {
     constructor(public readonly axiosInstance: AxiosInstance) {}
 
+    /**
+     * Get a certain resource
+     * @param uri The uri to send the request to
+     * @param config The axios-config to apply
+     * @returns The axios-response
+     * @throws `ServerError`, `WrongCredentials` or `UnknownFetchError` when something goes wrong
+     */
     public async get(uri: string, config: AxiosRequestConfig = {}) {
-        // Typescript compiler doesn't like it that `resp` is used in the try/catch block
-        // thats why the type declaration here is `any`
-        let resp: any;
-
         try {
-            resp = await this.axiosInstance.get(uri, config);
-        } catch {
-            try {
-                this.processStatusCode(resp.status);
-            } catch {
-                throw new UnknownFetchError();
-            }
+            return await this.axiosInstance.get(uri, config);
+        } catch (error: any) {
+            const statusCode = error.response.status;
+            this.processStatusCode(statusCode);
+            throw new UnknownFetchError(statusCode);
         }
-
-        return resp;
     }
 
     private processStatusCode(statusCode: number) {

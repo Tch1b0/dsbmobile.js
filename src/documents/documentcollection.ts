@@ -66,8 +66,8 @@ export class DocumentPostCollection {
      * @returns A new DocumentPostCollection
      */
     public static fromJSON(data: object): DocumentPostCollection {
-        let posts: DocumentPost[] = [];
-        for (let post of data["posts"]) {
+        const posts: DocumentPost[] = [];
+        for (const post of data["posts"]) {
             posts.push(DocumentPost.fromJSON(post));
         }
 

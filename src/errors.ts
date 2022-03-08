@@ -36,9 +36,9 @@ export class ServerError extends Error {
 }
 
 export class UnknownFetchError extends Error {
-    constructor() {
+    constructor(statusCode: number) {
         super(
-            "something went wrong while trying to fetch data. Are you sure you entered the right credentials?",
+            `something went wrong while trying to fetch data, the server responded with a ${statusCode} status-code. Are you sure you entered the right credentials?`,
         );
     }
 }

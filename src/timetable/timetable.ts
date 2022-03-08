@@ -76,20 +76,20 @@ export class TimeTable {
     static fromHtml(rawHtml: string) {
         const $ = cheerio.load(rawHtml);
 
-        let centers = $("center");
-        let entries: Entry[] = [];
+        const centers = $("center");
+        const entries: Entry[] = [];
 
-        for (let center of centers) {
+        for (const center of centers) {
             if (center.children.length <= 1) {
                 continue;
             }
-            let day = $(center)
+            const day = $(center)
                 .find(".mon_title")
                 .text()
                 .replace(",", "")
                 .split(" ")[1];
 
-            let [dateDay, month, year] = $(center)
+            const [dateDay, month, year] = $(center)
                 .find(".mon_title")
                 .text()
                 .split(" ")[0]
@@ -102,10 +102,10 @@ export class TimeTable {
                 Number(dateDay),
             );
 
-            for (let row of $(center).find("tr")) {
+            for (const row of $(center).find("tr")) {
                 if ($(row).find("th").length !== 0) continue;
 
-                let columns = $(row).find("td");
+                const columns = $(row).find("td");
 
                 let period = $(columns[1]).text();
                 if (period.includes("-")) {
@@ -149,8 +149,8 @@ export class TimeTable {
      * @returns A new `TimeTable` instance
      */
     public static fromJSON(data: object): TimeTable {
-        let entries: Entry[] = [];
-        for (let entry of data["entries"]) {
+        const entries: Entry[] = [];
+        for (const entry of data["entries"]) {
             entries.push(Entry.fromJSON(entry));
         }
 

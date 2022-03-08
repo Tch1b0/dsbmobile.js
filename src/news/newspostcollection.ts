@@ -69,8 +69,8 @@ export class NewsPostCollection {
      * @returns A new `NewsPostCollection`
      */
     public static fromJSON(data: object): NewsPostCollection {
-        let postArr: NewsPost[] = [];
-        for (let posts of data["posts"]) {
+        const postArr: NewsPost[] = [];
+        for (const posts of data["posts"]) {
             postArr.push(NewsPost.fromJSON(posts));
         }
 
