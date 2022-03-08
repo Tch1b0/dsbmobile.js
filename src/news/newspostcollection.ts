@@ -23,18 +23,18 @@ export class NewsPostCollection {
     }
 
     /**
-     * Find `NewsPost`s by their title
-     * @param title The title you want to search for
-     * @returns An array of `NewsPost`s
+     * find `NewsPost`s by their title
+     * @param title the title you want to search for
+     * @returns an array of `NewsPost`s
      */
     public findByTitle(title: string): NewsPost[] {
         return this.posts.filter((news) => news.title === title);
     }
 
     /**
-     * Find a `NewsPost`s by their date
-     * @param date The date you want to search for
-     * @returns An Array of `NewsPost`s
+     * find a `NewsPost`s by their date
+     * @param date the date you want to search for
+     * @returns an Array of `NewsPost`s
      */
     public findByDate(date: Date): NewsPost[] {
         return this.posts.filter(
@@ -46,9 +46,9 @@ export class NewsPostCollection {
     }
 
     /**
-     * Find a `NewsPost` by its content/detail
-     * @param detail The detail/content you want to search for
-     * @returns An array of `NewsPost`s
+     * find a `NewsPost` by its content/detail
+     * @param detail the detail/content you want to search for
+     * @returns an array of `NewsPost`s
      */
     public findByDetail(detail: string): NewsPost[] {
         return this.posts.filter((news) => news.detail === detail);
@@ -64,9 +64,9 @@ export class NewsPostCollection {
     }
 
     /**
-     * Create a new instance from `JSON`
-     * @param data The `JSON` data
-     * @returns A new `NewsPostCollection`
+     * create a new instance from `JSON`
+     * @param data the `JSON` data
+     * @returns a new `NewsPostCollection`
      */
     public static fromJSON(data: object): NewsPostCollection {
         const postArr: NewsPost[] = [];
