@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { WrongCredentials } from "@";
 import { ServerError, UnknownFetchError } from "@/errors";
 
@@ -6,21 +6,13 @@ export class Requester {
     constructor(public readonly axiosInstance: AxiosInstance) {}
 
     public async get(uri: string, config: AxiosRequestConfig = {}) {
-        // Typescript compiler doesn't like it that `resp` is used in the try/catch block
-        // thats why the type declaration here is `any`
-        let resp: any;
-
         try {
-            resp = await this.axiosInstance.get(uri, config);
-        } catch {
-            try {
-                this.processStatusCode(resp.status);
-            } catch {
-                throw new UnknownFetchError();
-            }
+            return await this.axiosInstance.get(uri, config);
+        } catch (error: any) {
+            const statusCode = error.response.status;
+            this.processStatusCode(statusCode);
+            throw new UnknownFetchError(statusCode);
         }
-
-        return resp;
     }
 
     private processStatusCode(statusCode: number) {
