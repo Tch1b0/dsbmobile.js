@@ -1,6 +1,6 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { WrongCredentials } from ".";
-import { ServerError, UnknownFetchError } from "./errors";
+import { AxiosInstance, AxiosRequestConfig } from "axios";
+import { WrongCredentials } from "@";
+import { ServerError, UnknownFetchError } from "@/errors";
 
 export class Requester {
     constructor(public readonly axiosInstance: AxiosInstance) {}
