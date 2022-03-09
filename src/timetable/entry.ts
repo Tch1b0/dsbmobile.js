@@ -70,7 +70,7 @@ export class Entry {
      *
      * // entry.newSubject = "E"
      *
-     * entry.longNewSubject()
+     * entry.longNewSubject
      * // -> Englisch
      * ```
      *
@@ -86,7 +86,7 @@ export class Entry {
      *
      * // entry.oldSubject = "WI"
      *
-     * entry.longOldSubject()
+     * entry.longOldSubject
      * // -> Wirtschaft
      * ```
      *

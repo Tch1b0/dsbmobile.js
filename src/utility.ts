@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Parse a date from string to a Date object.
  * Use this instead of the `Date.parse` function,

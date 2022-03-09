@@ -116,9 +116,7 @@ export class TimeTable {
                     new Entry(
                         date,
                         day,
-                        this.cleanedString($(columns[0]).text()).split(
-                            /\, |\,/,
-                        ),
+                        this.cleanedString($(columns[0]).text()).split(/, |,/),
                         Number(period),
                         this.cleanedString($(columns[2]).text()),
                         this.cleanedString($(columns[3]).text()),

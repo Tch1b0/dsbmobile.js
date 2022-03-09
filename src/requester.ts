@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig } from "axios";
 import { WrongCredentials } from "@";
 import { ServerError, UnknownFetchError } from "@/errors";
 
@@ -18,6 +18,7 @@ export class Requester {
     public async get(uri: string, config: AxiosRequestConfig = {}) {
         try {
             return await this.axiosInstance.get(uri, config);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             const statusCode = error.response.status;
             this.processStatusCode(statusCode);
