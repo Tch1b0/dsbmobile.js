@@ -1,7 +1,7 @@
 # dsbmobile.js
 
 ![badge](https://img.shields.io/github/license/Tch1b0/dsbmobile.js)
-![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/Test%20Package?label=unit%20tests)
+![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/ci?label=ci)
 ![badge](https://img.shields.io/github/issues/Tch1b0/dsbmobile.js)
 
 A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) API
