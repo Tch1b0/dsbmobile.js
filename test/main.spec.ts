@@ -11,8 +11,6 @@ const timetableSample = fs.readFileSync("./test/samples/timetable-sample", {
     encoding: "utf-8",
 });
 
-let entries: Entry[] = [];
-
 describe("Test DSBmobile Wrapper", () => {
     before(() => {
         nock("https://mobileapi.dsbcontrol.de")
@@ -33,7 +31,6 @@ describe("Test DSBmobile Wrapper", () => {
 
         const t = await ds.getTimetable();
 
-        entries = t.entries;
         // Test Entries
         const entry = t.entries[0];
         expect(entry).to.be.instanceOf(Entry);

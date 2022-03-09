@@ -5,7 +5,7 @@ import {
     TimeTable,
     MissingToken,
 } from "@";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { NewsPost } from "@/news/newspost";
 import { Requester } from "@/requester";
 
@@ -50,8 +50,8 @@ export default class Dsbmobile {
     token!: string;
     public readonly id!: string;
     public readonly password!: string;
-    public baseURL: string = "https://mobileapi.dsbcontrol.de";
-    public resourceBaseURL: string = "https://light.dsbcontrol.de";
+    public baseURL = "https://mobileapi.dsbcontrol.de";
+    public resourceBaseURL = "https://light.dsbcontrol.de";
 
     /**
      * Create a new DSBmobile wrapper
@@ -77,7 +77,7 @@ export default class Dsbmobile {
      */
     constructor(config: DsbmobileConfig);
 
-    constructor(...args: any[]) {
+    constructor(...args: unknown[]) {
         let config: DsbmobileConfig;
 
         // If the DsbmobileConfig was passed as an argument
