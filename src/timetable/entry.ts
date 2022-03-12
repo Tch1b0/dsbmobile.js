@@ -65,9 +65,10 @@ export class Entry {
 
     /**
      * The `newSubject` property is only the short of the subject.
-     * Here you get the full name of a subject, e.g:
-     * ```
+     * Here you get the full name of a subject.
      *
+     * @example
+     * ```js
      * // entry.newSubject = "E"
      *
      * entry.longNewSubject
@@ -81,9 +82,10 @@ export class Entry {
 
     /**
      * The `oldSubject` property is only the short of the subject.
-     * Here you get the full name of a subject, e.g:
-     * ```
+     * Here you get the full name of a subject.
      *
+     * @example
+     * ```js
      * // entry.oldSubject = "WI"
      *
      * entry.longOldSubject
