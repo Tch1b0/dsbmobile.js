@@ -23,13 +23,13 @@ let t = await dm.getTimetable();
 console.log(t.entries[0].newSubject);
 ```
 
-```
+```bash
 English
 ```
 
 ## Documentation
 
-You can read the docs [on this Github Wiki](https://github.com/Tch1b0/dsbmobile.js/wiki).
+You can read the docs [right here](https://tch1b0.github.io/dsbmobile.js/).
 
 ## Contribute
 

@@ -33,7 +33,7 @@ export class TimeTable {
      * Find a certain subject by its subject short.
      * For e.g the short for `Englisch` would be `E`.
      *
-     * If you want to find a subject based on its long name, then please
+     * If you want to find a subject based on its long name,
      * use the `TimeTable.findBySubjectLong` function
      *
      * @param subject The subject short you want to search for
