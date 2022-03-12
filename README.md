@@ -23,7 +23,7 @@ let t = await dm.getTimetable();
 console.log(t.entries[0].newSubject);
 ```
 
-```
+```bash
 English
 ```
 
