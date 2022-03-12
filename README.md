@@ -29,7 +29,7 @@ English
 
 ## Documentation
 
-You can read the docs [right here](https://tch1b0.github.com/dsbmobile.js/).
+You can read the docs [right here](https://tch1b0.github.io/dsbmobile.js/).
 
 ## Contribute
 
