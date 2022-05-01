@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
-import { WrongCredentials } from "@";
-import { ServerError, UnknownFetchError } from "@/errors";
+import { WrongCredentials } from "./";
+import { ServerError, UnknownFetchError } from "./errors";
 
 /**
  * The requester used to make requests to the dsbmobile-api

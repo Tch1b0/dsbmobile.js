@@ -1,8 +1,32 @@
-import { isText } from "@/utility";
-import { UnknownSubject } from "@";
+import { isText } from "../utility";
+import { UnknownSubject } from "../";
 
 export class Entry {
     public readonly date: Date;
+    public readonly subjectShorts = new Map<string, string>([
+        ["D", "Deutsch"],
+        ["E", "Englisch"],
+        ["WI", "Wirtschaft"],
+        ["GGK", "Geschichte und Gemeinschaftskunde"],
+        ["CH", "Chemie"],
+        ["S", "Sport"],
+        ["M", "Mathe"],
+        ["BK", "Bildende Kunst"],
+        ["BK1", "Bildende Kunst"],
+        ["BK2", "Bildende Kunst"],
+        ["GS", "Global Studies"],
+        ["PH", "Physik"],
+        ["IT", "Informatik"],
+        ["INF", "Informationstechnik"],
+        ["ITÜS", "IT Softwareentwicklung"],
+        ["ITÜH", "IT Hardware"],
+        ["EVR", "Religion"],
+        ["ETH", "Ethik"],
+        ["SP", "Zweitsprache"],
+        ["IFÖM", "Mathe Förderunterricht"],
+        ["IFÖE", "Englisch Förderunterricht"],
+        ["IFÖD", "Deutsch Förderunterricht"],
+    ]);
 
     constructor(
         date: Date | string,
@@ -97,6 +121,22 @@ export class Entry {
         return this.longSubjectName(this.oldSubject);
     }
 
+    /**
+     * Update the subject shorts with a map
+     * @param subjectShorts
+     *
+     * @example
+     * ```js
+     * entry.updateSubjectShorts(new Map([["D", "Deutsch"]]))
+     * ```
+     */
+    public registerSubjectShorts(subjectShorts: Map<string, string>) {
+        // Update the subjectShorts map with the parameter map
+        for (const [k, v] of subjectShorts) {
+            this.subjectShorts.set(k, v);
+        }
+    }
+
     private longSubjectName(subjectShort: string): string {
         const validReg = /[a-bA-b]/;
         if (!validReg.test(subjectShort)) {
@@ -106,32 +146,7 @@ export class Entry {
         const replaceReg = /([0-9]|\/).*$/;
         subjectShort = subjectShort.replace(replaceReg, "");
 
-        const subjectShorts = {
-            D: "Deutsch",
-            E: "Englisch",
-            WI: "Wirtschaft",
-            GGK: "Geschichte und Gemeinschaftskunde",
-            CH: "Chemie",
-            S: "Sport",
-            M: "Mathe",
-            BK: "Bildende Kunst",
-            BK1: "Bildende Kunst",
-            BK2: "Bildende Kunst",
-            GS: "Global Studies",
-            PH: "Physik",
-            IT: "Informatik",
-            INF: "Informationstechnik",
-            ITÜS: "IT Softwareentwicklung",
-            ITÜH: "IT Hardware",
-            EVR: "Religion",
-            ETH: "Ethik",
-            SP: "Zweitsprache",
-            IFÖM: "Mathe Förderunterricht",
-            IFÖE: "Englisch Förderunterricht",
-            IFÖD: "Deutsch Förderunterricht",
-        };
-
-        const subjectLong = subjectShorts[subjectShort];
+        const subjectLong = this.subjectShorts.get(subjectShort);
 
         if (subjectLong === undefined) {
             throw new UnknownSubject(subjectShort);

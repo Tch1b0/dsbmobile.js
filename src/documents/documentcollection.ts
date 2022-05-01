@@ -1,4 +1,4 @@
-import { DocumentPost } from "@/documents/documentpost";
+import { DocumentPost } from "./documentpost";
 
 export class DocumentPostCollection {
     constructor(public readonly posts: DocumentPost[]) {}

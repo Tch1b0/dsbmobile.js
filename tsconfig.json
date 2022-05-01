@@ -11,11 +11,7 @@
         "esModuleInterop": true,
         "strict": true,
         "downlevelIteration": true,
-        "resolveJsonModule": true,
-        "paths": {
-            "@": ["./"],
-            "@/*": ["./*"]
-        }
+        "resolveJsonModule": true
     },
     "include": ["src/**/*"]
 }

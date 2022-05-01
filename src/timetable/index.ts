@@ -1,2 +1,2 @@
-export { TimeTable } from "@/timetable/timetable";
-export { Entry } from "@/timetable/entry";
+export { TimeTable } from "./timetable";
+export { Entry } from "./entry";

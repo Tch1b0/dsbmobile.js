@@ -1,4 +1,4 @@
-import { NewsPost } from "@/news";
+import { NewsPost } from "./newspost";
 
 /**
  * The resource **NewsPostCollection**.

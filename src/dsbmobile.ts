@@ -4,10 +4,10 @@ import {
     NewsPostCollection,
     TimeTable,
     MissingToken,
-} from "@";
+} from "./";
 import axios from "axios";
-import { NewsPost } from "@/news/newspost";
-import { Requester } from "@/requester";
+import { NewsPost } from "./";
+import { Requester } from "./requester";
 
 /**
  * The configuration Object for a `Dsbmobile` instance

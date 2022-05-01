@@ -26,7 +26,7 @@ describe("Test components(classes)", () => {
         const entry2 = Entry.fromJSON(data);
 
         try {
-            // `expect` beneath should throw an exception
+            // `expect` below should throw an exception
             expect(entry2.longNewSubject).to.throw("UnknownSubject");
             throw new Error();
         } catch (e) {

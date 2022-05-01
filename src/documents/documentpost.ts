@@ -1,4 +1,4 @@
-import { isText, parseDate } from "@/utility";
+import { isText, parseDate } from "../utility";
 
 export class DocumentPost {
     /**
