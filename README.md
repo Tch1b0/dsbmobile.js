@@ -8,7 +8,7 @@ A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) API
 
 ## Installation
 
-```
+```bash
 $ npm install dsbmobile
 ```
 
@@ -23,7 +23,7 @@ let t = await dm.getTimetable();
 console.log(t.entries[0].newSubject);
 ```
 
-```bash
+```
 English
 ```
 
