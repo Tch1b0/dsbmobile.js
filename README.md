@@ -57,3 +57,9 @@ new Dsbmobile({
 After that, all requests will not be sent to the official Server, but to the mydsb.johannespour.de one, which will make a request for you to the resource and add a CORS header.
 
 If you are concerned about privacy and other things, you can [check out the code](https://github.com/Tch1b0/dsb-middleware), because it's open source.
+
+## Incompatible plan
+
+As I only know the layout of my local DSBmobile substitution plan, it is possible that your DSBmobile substitution plan may be incompatible with this package.
+
+If this is the case, please leave a comment below [issue #43](https://github.com/Tch1b0/dsbmobile.js/issues/43), in which you describe the layout of your plan, so a solution can be worked out.
