@@ -42,6 +42,16 @@ describe("Test DSBmobile Wrapper", () => {
         expect(otherEntry.oldSubject).to.eq("CH");
         expect(otherEntry.longOldSubject).to.eq("Chemie");
 
+        otherEntry.registerSubjectShorts(
+            new Map([["CH", "LONG SUBJECT NAME"]]),
+        );
+        expect(otherEntry.oldSubject).to.eq("CH");
+        expect(otherEntry.longOldSubject).to.eq("LONG SUBJECT NAME");
+
+        t.registerSubjectShorts(new Map([["CH", "OTHER SUBJECT NAME"]]));
+        expect(otherEntry.oldSubject).to.eq("CH");
+        expect(otherEntry.longOldSubject).to.eq("OTHER SUBJECT NAME");
+
         const someCertainEntry = t.findByClassName("TGM11/1");
         expect(someCertainEntry).to.be.instanceOf(Array);
 
