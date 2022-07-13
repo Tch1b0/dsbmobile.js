@@ -4,7 +4,7 @@
 ![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/ci?label=ci)
 ![badge](https://img.shields.io/github/issues/Tch1b0/dsbmobile.js)
 
-A Javascript wrapper for the [dsbmobile](https://dsbmobile.de) API
+A Javascript package for the [dsbmobile](https://dsbmobile.de) API
 
 ## Installation
 
