@@ -1,11 +1,63 @@
 import { Entry } from "./entry";
-import cheerio from "cheerio";
+import { load } from "cheerio";
+import { SubjectContainer } from "./subjectcontainer";
 
 /**
  * The time table resource
  */
-export class TimeTable {
-    constructor(public readonly entries: Entry[]) {}
+export class TimeTable implements SubjectContainer {
+    public subjectShorts = new Map<string, string>([
+        ["D", "Deutsch"],
+        ["E", "Englisch"],
+        ["WI", "Wirtschaft"],
+        ["GGK", "Geschichte und Gemeinschaftskunde"],
+        ["CH", "Chemie"],
+        ["S", "Sport"],
+        ["M", "Mathe"],
+        ["BK", "Bildende Kunst"],
+        ["BK1", "Bildende Kunst"],
+        ["BK2", "Bildende Kunst"],
+        ["GS", "Global Studies"],
+        ["PH", "Physik"],
+        ["IT", "Informatik"],
+        ["INF", "Informationstechnik"],
+        ["ITÜS", "IT Softwareentwicklung"],
+        ["ITÜH", "IT Hardware"],
+        ["EVR", "Religion"],
+        ["ETH", "Ethik"],
+        ["SP", "Zweitsprache"],
+        ["IFÖM", "Mathe Förderunterricht"],
+        ["IFÖE", "Englisch Förderunterricht"],
+        ["IFÖD", "Deutsch Förderunterricht"],
+    ]);
+
+    constructor(public readonly entries: Entry[]) {
+        entries.forEach((e) => e.registerSubjectShorts(this.subjectShorts));
+    }
+
+    /**
+     * Update the subject shorts for all entries in this timetable instance
+     * @param subjectShorts The subject shorts mapped to their long name
+     *
+     * @example
+     * ```js
+     * timetable.registerSubjectShorts(new Map([["D", "Deutsch"]]))
+     * ```
+     */
+    public registerSubjectShorts(subjectShorts: Map<string, string>): void {
+        for (const [k, v] of subjectShorts) {
+            this.subjectShorts.set(k, v);
+        }
+
+        for (const entry of this.entries) {
+            entry.registerSubjectShorts(subjectShorts);
+        }
+    }
+
+    public addEntry(entry: Entry) {
+        entry.registerSubjectShorts(this.subjectShorts);
+        this.entries.push(entry);
+    }
 
     /**
      * Find a certain entry by the class name
@@ -74,7 +126,7 @@ export class TimeTable {
      * @returns A new `TimeTable` resource
      */
     static fromHtml(rawHtml: string) {
-        const $ = cheerio.load(rawHtml);
+        const $ = load(rawHtml);
 
         const centers = $("center");
         const entries: Entry[] = [];

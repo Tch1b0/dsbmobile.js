@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * Parse a date from string to a Date object.
  * Use this instead of the `Date.parse` function,
@@ -26,6 +24,6 @@ export function parseDate(rawDate: string): Date {
  * @param data the data to validate
  * @returns whether the data is a string
  */
-export function isText(data: any): data is string {
+export function isText(data: string | unknown): data is string {
     return typeof data === "string";
 }
