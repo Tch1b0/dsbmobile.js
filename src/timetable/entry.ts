@@ -1,7 +1,8 @@
 import { isText } from "../utility";
 import { UnknownSubject } from "../";
+import { SubjectContainer } from "./subjectcontainer";
 
-export class Entry {
+export class Entry implements SubjectContainer {
     public readonly date: Date;
     public readonly subjectShorts = new Map<string, string>([
         ["D", "Deutsch"],
@@ -123,7 +124,7 @@ export class Entry {
 
     /**
      * Update the subject shorts with a map
-     * @param subjectShorts
+     * @param subjectShorts the subject shorts mapped to their long name
      *
      * @example
      * ```js
