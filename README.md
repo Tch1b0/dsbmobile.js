@@ -17,10 +17,11 @@ $ npm install dsbmobile
 ```js
 import Dsbmobile from "dsbmobile";
 
-const dm = new Dsbmobile("<id>", "<password>");
+const dsb = new Dsbmobile("<id>", "<password>");
 
-const t = await dm.getTimetable();
-console.log(t.entries[0].newSubject);
+dsb.getTimetable().then((timetable) => {
+    console.log(timetable.entries[0].newSubject);
+});
 ```
 
 ```
