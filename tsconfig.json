@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "CommonJS",
         "baseUrl": "src",
         "target": "es5",
         "noImplicitAny": false,
@@ -13,5 +13,6 @@
         "downlevelIteration": true,
         "resolveJsonModule": true
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules/**/*"]
 }

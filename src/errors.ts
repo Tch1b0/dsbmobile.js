@@ -42,3 +42,11 @@ export class UnknownFetchError extends Error {
         );
     }
 }
+
+export class IncompatiblePlan extends Error {
+    constructor() {
+        super(
+            "it seems like the format of the targeted substitution-plan is not supported. Please read https://github.com/Tch1b0/dsbmobile.js#incompatible-plan",
+        );
+    }
+}
