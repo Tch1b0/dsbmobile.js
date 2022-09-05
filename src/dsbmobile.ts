@@ -1,12 +1,13 @@
 import {
+    NewsPost,
     DocumentPost,
     DocumentPostCollection,
     NewsPostCollection,
     TimeTable,
     MissingToken,
+    IncompatiblePlan,
 } from "./";
 import axios from "axios";
-import { NewsPost } from "./";
 import { Requester } from "./requester";
 
 /**
@@ -115,6 +116,7 @@ export default class Dsbmobile {
     /**
      * Get your current **Timetable**
      * @throws `MissingToken` if the token isn't declared
+     * @throws `IncompatiblePlan` if the format of the targeted plan is not supported
      * @returns A new `TimeTable` resource
      */
     public async getTimetable(): Promise<TimeTable> {
@@ -131,7 +133,11 @@ export default class Dsbmobile {
 
         resp = await this.requester.get(resURL);
 
-        return TimeTable.fromHtml(resp.data);
+        try {
+            return TimeTable.fromHtml(resp.data);
+        } catch (error) {
+            throw new IncompatiblePlan();
+        }
     }
 
     /**
