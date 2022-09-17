@@ -30,15 +30,15 @@ export class UnknownSubject extends Error {
 }
 
 export class ServerError extends Error {
-    constructor() {
-        super("the API Server ran into some issues");
+    constructor(statusCode: number) {
+        super(`the Server ran into some issues and returned status code ${statusCode}`);
     }
 }
 
 export class UnknownFetchError extends Error {
     constructor(statusCode: number) {
         super(
-            `something went wrong while trying to fetch data, the server responded with a ${statusCode} status-code. Are you sure you entered the right credentials?`,
+            `something went wrong while trying to fetch data, the server responded with a ${statusCode} status code. Are you sure you entered the right credentials?`,
         );
     }
 }

@@ -28,7 +28,7 @@ export class Requester {
 
     private processStatusCode(statusCode: number) {
         if (statusCode.toString().startsWith("5")) {
-            throw new ServerError();
+            throw new ServerError(statusCode);
         } else if (statusCode == 401) {
             throw new WrongCredentials();
         }
