@@ -1,33 +1,10 @@
-import { isText } from "../utility";
+import { defaultSubjectShorts, isText } from "../utility";
 import { UnknownSubject } from "../";
 import { SubjectContainer } from "./subjectcontainer";
 
 export class Entry implements SubjectContainer {
     public readonly date: Date;
-    public readonly subjectShorts = new Map<string, string>([
-        ["D", "Deutsch"],
-        ["E", "Englisch"],
-        ["WI", "Wirtschaft"],
-        ["GGK", "Geschichte und Gemeinschaftskunde"],
-        ["CH", "Chemie"],
-        ["S", "Sport"],
-        ["M", "Mathe"],
-        ["BK", "Bildende Kunst"],
-        ["BK1", "Bildende Kunst"],
-        ["BK2", "Bildende Kunst"],
-        ["GS", "Global Studies"],
-        ["PH", "Physik"],
-        ["IT", "Informatik"],
-        ["INF", "Informationstechnik"],
-        ["ITÜS", "IT Softwareentwicklung"],
-        ["ITÜH", "IT Hardware"],
-        ["EVR", "Religion"],
-        ["ETH", "Ethik"],
-        ["SP", "Zweitsprache"],
-        ["IFÖM", "Mathe Förderunterricht"],
-        ["IFÖE", "Englisch Förderunterricht"],
-        ["IFÖD", "Deutsch Förderunterricht"],
-    ]);
+    public readonly subjectShorts = new Map<string, string>(defaultSubjectShorts);
 
     constructor(
         date: Date | string,
