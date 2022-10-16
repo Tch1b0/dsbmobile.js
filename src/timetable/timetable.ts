@@ -1,35 +1,13 @@
 import { Entry } from "./entry";
 import { load } from "cheerio";
 import { SubjectContainer } from "./subjectcontainer";
+import { defaultSubjectShorts } from "utility";
 
 /**
  * The time table resource
  */
 export class TimeTable implements SubjectContainer {
-    public subjectShorts = new Map<string, string>([
-        ["D", "Deutsch"],
-        ["E", "Englisch"],
-        ["WI", "Wirtschaft"],
-        ["GGK", "Geschichte und Gemeinschaftskunde"],
-        ["CH", "Chemie"],
-        ["S", "Sport"],
-        ["M", "Mathe"],
-        ["BK", "Bildende Kunst"],
-        ["BK1", "Bildende Kunst"],
-        ["BK2", "Bildende Kunst"],
-        ["GS", "Global Studies"],
-        ["PH", "Physik"],
-        ["IT", "Informatik"],
-        ["INF", "Informationstechnik"],
-        ["ITÜS", "IT Softwareentwicklung"],
-        ["ITÜH", "IT Hardware"],
-        ["EVR", "Religion"],
-        ["ETH", "Ethik"],
-        ["SP", "Zweitsprache"],
-        ["IFÖM", "Mathe Förderunterricht"],
-        ["IFÖE", "Englisch Förderunterricht"],
-        ["IFÖD", "Deutsch Förderunterricht"],
-    ]);
+    public subjectShorts = new Map<string, string>(defaultSubjectShorts);
 
     constructor(public readonly entries: Entry[]) {
         entries.forEach((e) => e.registerSubjectShorts(this.subjectShorts));

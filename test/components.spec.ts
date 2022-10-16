@@ -22,17 +22,13 @@ describe("Test components(classes)", () => {
         expect(entry1.longOldSubject).to.be.a("string").and.equal("Mathe");
         expect(entry1.longNewSubject).to.be.a("string").and.equal("Deutsch");
 
-        data["old-subject"] = "This subject does not exist";
-        const entry2 = Entry.fromJSON(data);
+        const entry2 = Entry.fromJSON(data)
 
-        try {
-            // `expect` below should throw an exception
-            expect(entry2.longNewSubject).to.throw("UnknownSubject");
-            throw new Error();
-        } catch (e) {
-            // validate that expected exception got catched
-            expect(true).to.equal(true);
-        }
+        data["old-subject"] = "This subject does not exist";
+        const entry3 = Entry.fromJSON(data);
+
+        expect(entry1.equals(entry3)).to.be.false;
+        expect(entry1.equals(entry2)).to.be.true;
     });
 
     it("Create and test NewsPost", () => {

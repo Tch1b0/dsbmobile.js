@@ -27,3 +27,28 @@ export function parseDate(rawDate: string): Date {
 export function isText(data: string | unknown): data is string {
     return typeof data === "string";
 }
+
+export const defaultSubjectShorts: [string, string][] = [
+    ["D", "Deutsch"],
+    ["E", "Englisch"],
+    ["WI", "Wirtschaft"],
+    ["GGK", "Geschichte und Gemeinschaftskunde"],
+    ["CH", "Chemie"],
+    ["S", "Sport"],
+    ["M", "Mathe"],
+    ["BK", "Bildende Kunst"],
+    ["BK1", "Bildende Kunst"],
+    ["BK2", "Bildende Kunst"],
+    ["GS", "Global Studies"],
+    ["PH", "Physik"],
+    ["IT", "Informatik"],
+    ["INF", "Informationstechnik"],
+    ["ITÜS", "IT Softwareentwicklung"],
+    ["ITÜH", "IT Hardware"],
+    ["EVR", "Religion"],
+    ["ETH", "Ethik"],
+    ["SP", "Zweitsprache"],
+    ["IFÖM", "Mathe Förderunterricht"],
+    ["IFÖE", "Englisch Förderunterricht"],
+    ["IFÖD", "Deutsch Förderunterricht"],
+]

@@ -1,33 +1,10 @@
-import { isText } from "../utility";
+import { defaultSubjectShorts, isText } from "../utility";
 import { UnknownSubject } from "../";
 import { SubjectContainer } from "./subjectcontainer";
 
 export class Entry implements SubjectContainer {
     public readonly date: Date;
-    public readonly subjectShorts = new Map<string, string>([
-        ["D", "Deutsch"],
-        ["E", "Englisch"],
-        ["WI", "Wirtschaft"],
-        ["GGK", "Geschichte und Gemeinschaftskunde"],
-        ["CH", "Chemie"],
-        ["S", "Sport"],
-        ["M", "Mathe"],
-        ["BK", "Bildende Kunst"],
-        ["BK1", "Bildende Kunst"],
-        ["BK2", "Bildende Kunst"],
-        ["GS", "Global Studies"],
-        ["PH", "Physik"],
-        ["IT", "Informatik"],
-        ["INF", "Informationstechnik"],
-        ["ITÜS", "IT Softwareentwicklung"],
-        ["ITÜH", "IT Hardware"],
-        ["EVR", "Religion"],
-        ["ETH", "Ethik"],
-        ["SP", "Zweitsprache"],
-        ["IFÖM", "Mathe Förderunterricht"],
-        ["IFÖE", "Englisch Förderunterricht"],
-        ["IFÖD", "Deutsch Förderunterricht"],
-    ]);
+    public readonly subjectShorts = new Map<string, string>(defaultSubjectShorts);
 
     constructor(
         date: Date | string,
@@ -154,6 +131,22 @@ export class Entry implements SubjectContainer {
         }
 
         return subjectLong;
+    }
+
+    /**
+     * check if this entry equals another entry
+     * @param other the entry to compare to this one
+     * @returns whether the entries are equal
+     */
+    public equals(other: Entry): boolean {
+        return this.className === other.className &&
+            this.date.toString() === other.date.toString() &&
+            this.day === other.day &&
+            this.description === other.description &&
+            this.oldRoom === other.oldRoom &&
+            this.newRoom === other.newRoom &&
+            this.oldSubject === other.oldSubject &&
+            this.newSubject === other.newSubject;
     }
 
     /**
