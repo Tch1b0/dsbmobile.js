@@ -156,6 +156,17 @@ export class Entry implements SubjectContainer {
         return subjectLong;
     }
 
+    public equals(other: Entry): boolean {
+        return this.className === other.className &&
+            this.date.toString() === other.date.toString() &&
+            this.day === other.day &&
+            this.description === other.description &&
+            this.oldRoom === other.oldRoom &&
+            this.newRoom === other.newRoom &&
+            this.oldSubject === other.oldSubject &&
+            this.newSubject === other.newSubject;
+    }
+
     /**
      * @returns This object as a `JSON` representation
      */
