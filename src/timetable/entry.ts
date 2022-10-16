@@ -133,6 +133,11 @@ export class Entry implements SubjectContainer {
         return subjectLong;
     }
 
+    /**
+     * check if this entry equals another entry
+     * @param other the entry to compare to this one
+     * @returns whether the entries are equal
+     */
     public equals(other: Entry): boolean {
         return this.className === other.className &&
             this.date.toString() === other.date.toString() &&
