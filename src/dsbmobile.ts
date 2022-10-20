@@ -101,7 +101,6 @@ export default class Dsbmobile {
         this.password = config.password || this.password;
         this.baseURL = config.baseURL || this.baseURL;
         this.resourceBaseURL = config.resourceBaseURL || this.resourceBaseURL;
-        this.resourceBaseURL = config.resourceBaseURL || this.resourceBaseURL;
         this.token = config.token || this.token;
 
         // Create a new Axios instance from the baseURL
@@ -188,7 +187,7 @@ export default class Dsbmobile {
     public async fetchToken() {
         const res = await this.requester.get(
             "/authid?bundleid=de.heinekingmedia.dsbmobile&appversion=35&osversion=22&pushid" +
-                `&user=${this.id}&password=${this.password}`,
+            `&user=${this.id}&password=${this.password}`,
         );
 
         this.token = res.data;

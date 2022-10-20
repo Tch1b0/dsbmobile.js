@@ -127,4 +127,15 @@ describe("Test DSBmobile Wrapper", () => {
         expect(postCollection.findByDate(new Date())).to.be.a("array");
         expect(postCollection.toJSON()).to.be.a("object");
     });
+    it("Create Dsbmobile instance with other urls", () => {
+        const ds = new Dsbmobile({
+            id: "testUser",
+            password: "testPassword",
+            resourceBaseURL: "abc",
+            baseURL: "cba",
+        })
+
+        expect(ds.resourceBaseURL).to.equal("abc");
+        expect(ds.baseURL).to.equal("cba");
+    })
 });
