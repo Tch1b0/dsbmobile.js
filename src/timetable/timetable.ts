@@ -1,7 +1,7 @@
 import { Entry } from "./entry";
 import { load } from "cheerio";
 import { SubjectContainer } from "./subjectcontainer";
-import { defaultSubjectShorts } from "utility";
+import { defaultSubjectShorts } from "../utility";
 
 /**
  * The time table resource
