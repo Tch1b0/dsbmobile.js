@@ -10,6 +10,7 @@
         "btest": "npm run build && npm test",
         "test": "ts-mocha --config tsconfig.json --paths test/**/*.spec.ts",
         "lint": "eslint . --ext .ts",
+        "format": "eslint . --ext .ts --fix",
         "docs": "typedoc"
     },
     "repository": {
