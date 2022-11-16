@@ -4,7 +4,9 @@ import { SubjectContainer } from "./subjectcontainer";
 
 export class Entry implements SubjectContainer {
     public readonly date: Date;
-    public readonly subjectShorts = new Map<string, string>(defaultSubjectShorts);
+    public readonly subjectShorts = new Map<string, string>(
+        defaultSubjectShorts,
+    );
 
     constructor(
         date: Date | string,
@@ -24,7 +26,9 @@ export class Entry implements SubjectContainer {
     /**
      * The entry only holds a `period` attribute, which does
      * not represent actual time.
-     * This function gives you the real time of the lesson
+     * This function gives you the real time of the lesson.
+     *
+     * This function assumes that the first period takes place at 07:30 and one period takes 45 minutes.
      *
      * @returns Real time of the lesson
      */
@@ -139,14 +143,16 @@ export class Entry implements SubjectContainer {
      * @returns whether the entries are equal
      */
     public equals(other: Entry): boolean {
-        return this.className === other.className &&
+        return (
+            this.className === other.className &&
             this.date.toString() === other.date.toString() &&
             this.day === other.day &&
             this.description === other.description &&
             this.oldRoom === other.oldRoom &&
             this.newRoom === other.newRoom &&
             this.oldSubject === other.oldSubject &&
-            this.newSubject === other.newSubject;
+            this.newSubject === other.newSubject
+        );
     }
 
     /**
