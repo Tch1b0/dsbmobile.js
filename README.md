@@ -3,7 +3,7 @@
 ![badge](https://img.shields.io/github/license/Tch1b0/dsbmobile.js)
 [![badge](https://img.shields.io/npm/v/dsbmobile)](https://www.npmjs.com/package/dsbmobile)
 [![badge](https://img.shields.io/badge/docs-%F0%9F%93%96-blue)](https://tch1b0.github.io/dsbmobile.js/)
-![badge](https://img.shields.io/github/workflow/status/Tch1b0/dsbmobile.js/ci?label=ci)
+![badge](https://img.shields.io/github/actions/workflow/status/Tch1b0/dsbmobile.js/ci.yml?branch=master&label=ci)
 ![badge](https://img.shields.io/github/issues/Tch1b0/dsbmobile.js)
 
 A Javascript package for the [dsbmobile](https://dsbmobile.de) API
