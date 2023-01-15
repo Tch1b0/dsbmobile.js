@@ -24,6 +24,16 @@ export class DocumentPost {
         this.date = isText(date) ? new Date(date) : date;
     }
 
+    public equals(other: DocumentPost): boolean {
+        return (
+            this.id === other.id &&
+            this.title === other.title &&
+            this.date.getTime() === other.date.getTime() &&
+            this.url === other.url &&
+            this.previewURL === other.previewURL
+        );
+    }
+
     /**
      * Create a new `DocumentPost` from the json structure of the dsb backend
      * @param data The `JSON` data

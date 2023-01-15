@@ -145,7 +145,7 @@ export class Entry implements SubjectContainer {
     public equals(other: Entry): boolean {
         return (
             this.className === other.className &&
-            this.date.toString() === other.date.toString() &&
+            this.date.getTime() === other.date.getTime() &&
             this.day === other.day &&
             this.description === other.description &&
             this.oldRoom === other.oldRoom &&
