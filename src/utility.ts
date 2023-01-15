@@ -51,4 +51,4 @@ export const defaultSubjectShorts: [string, string][] = [
     ["IFÖM", "Mathe Förderunterricht"],
     ["IFÖE", "Englisch Förderunterricht"],
     ["IFÖD", "Deutsch Förderunterricht"],
-]
+];
