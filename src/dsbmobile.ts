@@ -187,7 +187,7 @@ export default class Dsbmobile {
     public async fetchToken() {
         const res = await this.requester.get(
             "/authid?bundleid=de.heinekingmedia.dsbmobile&appversion=35&osversion=22&pushid" +
-            `&user=${this.id}&password=${this.password}`,
+                `&user=${this.id}&password=${this.password}`,
         );
 
         this.token = res.data;
