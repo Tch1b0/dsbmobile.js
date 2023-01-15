@@ -18,7 +18,7 @@ export class TimeTable implements SubjectContainer {
      * @example
      * ```js
      * // use custom html-handler
-     * TimeTable.fromHtmlHandler = (html) => {
+     * TimeTable.htmlHandler = (html) => {
      *     var div = html("my-div")
      *     var data = div.text()
      *
@@ -29,10 +29,10 @@ export class TimeTable implements SubjectContainer {
      * @example
      * ```js
      * // reset html-handler to default
-     * TimeTable.fromHtmlHandler = undefined
+     * TimeTable.htmlHandler = undefined
      * ```
      */
-    public static fromHtmlHandler: (html: CheerioAPI) => TimeTable;
+    public static htmlHandler: (html: CheerioAPI) => TimeTable;
 
     constructor(public readonly entries: Entry[]) {
         entries.forEach((e) => e.registerSubjectShorts(this.subjectShorts));
@@ -130,8 +130,8 @@ export class TimeTable implements SubjectContainer {
      */
     public static fromHtml(rawHtml: string) {
         const $ = load(rawHtml);
-        if (TimeTable.fromHtmlHandler !== undefined) {
-            return TimeTable.fromHtmlHandler($);
+        if (TimeTable.htmlHandler !== undefined) {
+            return TimeTable.htmlHandler($);
         }
 
         const centers = $("center");
@@ -161,9 +161,10 @@ export class TimeTable implements SubjectContainer {
             );
 
             for (const row of $(center).find("tr")) {
-                if ($(row).find("th").length !== 0) continue;
+                const rowCheer = $(row);
+                if (rowCheer.find("th").length !== 0) continue;
 
-                const columns = $(row).find("td");
+                const columns = rowCheer.find("td");
 
                 let period = $(columns[1]).text();
                 if (period.includes("-")) {
