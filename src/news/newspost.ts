@@ -11,6 +11,14 @@ export class NewsPost {
         this.date = isText(date) ? new Date(date) : date;
     }
 
+    public equals(other: NewsPost): boolean {
+        return (
+            this.title === other.title &&
+            this.date.getTime() === other.date.getTime() &&
+            this.detail === other.detail
+        );
+    }
+
     /**
      * Create a `NewsPost` object from JSON
      * @param json The json object you want to generate a `NewsPost` from

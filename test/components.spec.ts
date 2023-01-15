@@ -22,7 +22,7 @@ describe("Test components(classes)", () => {
         expect(entry1.longOldSubject).to.be.a("string").and.equal("Mathe");
         expect(entry1.longNewSubject).to.be.a("string").and.equal("Deutsch");
 
-        const entry2 = Entry.fromJSON(data)
+        const entry2 = Entry.fromJSON(data);
 
         data["old-subject"] = "This subject does not exist";
         const entry3 = Entry.fromJSON(data);
@@ -38,12 +38,13 @@ describe("Test components(classes)", () => {
             detail: "Detial",
         };
         const post = NewsPost.fromJSON(data);
+        const post2 = NewsPost.fromJSON(post.toJSON());
 
         expect(JSON.stringify(post.toJSON())).to.equal(JSON.stringify(data));
         expect(post.title).to.be.a("string").and.equal(data["title"]);
         expect(post.date).to.be.a("date").and.equal(data["date"]);
         expect(post.detail).to.be.a("string").and.equal(data["detail"]);
-        expect(NewsPost.fromJSON(post.toJSON()).date).be.instanceOf(Date);
+        expect(post2.equals(post)).to.be.true;
     });
 
     it("Create and test DocumentPost", () => {
@@ -55,6 +56,7 @@ describe("Test components(classes)", () => {
             "preview-url": "previewURL",
         };
         const post = DocumentPost.fromJSON(data);
+        const post2 = DocumentPost.fromJSON(post.toJSON());
 
         expect(JSON.stringify(post.toJSON())).to.equal(JSON.stringify(data));
         expect(post.id).to.be.a("string").and.equal(data["id"]);
@@ -64,6 +66,6 @@ describe("Test components(classes)", () => {
         expect(post.previewURL)
             .to.be.a("string")
             .and.equal(data["preview-url"]);
-        expect(DocumentPost.fromJSON(post.toJSON()).date).be.instanceOf(Date);
+        expect(post2.equals(post)).to.be.true;
     });
 });

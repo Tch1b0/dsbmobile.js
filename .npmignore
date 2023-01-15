@@ -1,8 +1,10 @@
-test/
+.github/
 src/
+test/
+docs/
 node_modules/
+practical-test/
+
+.prettierrc
 package-lock.json
 tsconfig.json
-.prettierrc
-.github/
-practical-test/
