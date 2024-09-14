@@ -42,9 +42,9 @@ Feel free to contribute [on the Github repository](https://github.com/Tch1b0/dsb
 
 The official dsbmobile API doesn't send a [CORS header](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), which is required for Browser requests, due to security reasons.
 
-However, there is a way to bypass it that is **not** a security tradeoff.
+However, there is a way to bypass it that is _not_ a security tradeoff.
 
-Use https://mydsb.johannespour.de ([also on Github](https://github.com/Tch1b0/dsb-middleware)) instead.
+Use https://mydsb.johannespour.de ([also on Github](https://github.com/Tch1b0/dsb-middleware)) as the `baseURL` instead.
 
 You can use it like this like this:
 
@@ -57,12 +57,14 @@ new Dsbmobile({
 });
 ```
 
-After that, all requests will not be sent to the official Server, but to the mydsb.johannespour.de one, which will make a request for you to the resource and add a CORS header.
+After that, all requests will not be sent to the official Server, but to the mydsb.johannespour.de one, which will make a request for you to the resource and add a CORS header. It works as a proxy between you and the official dsbmobile servers.
 
-If you are concerned about privacy and other things, you can [check out the code](https://github.com/Tch1b0/dsb-middleware), because it's open source.
+If you are concerned about privacy and other things, you can [check out the code](https://github.com/Tch1b0/dsb-middleware) and/or host the middleware yourself.
 
 ## Incompatible plan
 
 As I only know the layout of my local DSBmobile substitution plan, it is possible that your DSBmobile substitution plan may be incompatible with this package.
 
-If this is the case, please leave a comment below [issue #43](https://github.com/Tch1b0/dsbmobile.js/issues/43), in which you describe the layout of your plan, so a solution can be worked out.
+If that is the case, please leave a comment below [issue #43](https://github.com/Tch1b0/dsbmobile.js/issues/43), in which you describe the layout of your plan, so a solution can be worked out.
+
+Since [version `v1.2.0`](https://github.com/Tch1b0/dsbmobile.js/releases/tag/v1.2.0) you can also define your own handler to parse your custom substitution plan.
